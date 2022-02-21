@@ -11,14 +11,8 @@ Rails.application.routes.draw do
   get 'rentals/edit'
   get 'rentals/update'
   get 'rentals/destroy'
-  get 'offers/index'
-  get 'offers/show'
-  get 'offers/new'
-  get 'offers/create'
-  get 'offers/edit'
-  get 'offers/update'
-  get 'offers/destroy'
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :offers
 end
