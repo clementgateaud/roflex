@@ -6,7 +6,6 @@ class OffersController < ApplicationController
   end
 
   def show
-    @offer = Offer.new(param[:id])
   end
 
   def new
