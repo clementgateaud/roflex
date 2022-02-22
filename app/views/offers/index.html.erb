@@ -5,7 +5,8 @@
       <div class="col-sm-6 col-md-4 mb-3">
         <%= link_to offer, class:"card-offer-link" do %>
           <div class="card-offer">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <%= cl_image_tag offer.photo.key, height: 300, width: 400, crop: :fill %>
+            <%# <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" /> %>
             <div class="card-offer-infos">
               <div>
                 <h2><%= offer.name %></h2>
