@@ -5,6 +5,7 @@
     <div class="form-inputs">
       <%= f.input :first_name, required: true, autofocus: true, input_html: { autocomplete: "last_name" }, label: false, placeholder: "First name" %>
       <%= f.input :last_name, required: true, input_html: { autocomplete: "last_name" }, autofocus: true, label: false, placeholder: "Last name" %>
+      <%= f.input :username, required: true, autofocus: true, label: false, placeholder: "Username" %>
       <%= f.input :email,
                   required: true,
                   autofocus: true,
