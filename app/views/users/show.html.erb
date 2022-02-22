@@ -1,4 +1,14 @@
-<div class="container mt-5">
-<h1> Hello <%= @user.first_name %> </h1>
-<p>Bienvenue dans mon profil</p>
+<div class="container mt-5 text-center">
+  <h1> Hello <%= @user.first_name %> </h1>
+  <%= image_tag(@user.profile_picture_url) %>
+  <ul>
+    <li>First name: <%= @user.first_name %></li>
+    <li>Last name: <%= @user.last_name %></li>
+    <li>Username: <%= @user.username %></li>
+    <li>Email address: <%= @user.email %></li>
+    <li>Phone number: <%= @user.phone_number %></li>
+    <li>Address: <%= @user.address %></li>
+  </ul>
+
+  <%= link_to "Back to home", root_path %>
 </div>

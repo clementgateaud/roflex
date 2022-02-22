@@ -14,8 +14,10 @@ class OffersController < ApplicationController
 
   def create
     @offer = Offer.new(offer_params)
-    if @offer.save
-      redirect_to offers_index_path(@offer)
+    @offer.user = User.first
+    # à changer quand on peut se log in
+    if @offer.save!
+      redirect_to offer_path(@offer), notice: 'Offer was successfully created.'
     else
       render :new
     end
