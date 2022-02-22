@@ -6,10 +6,11 @@ class User < ApplicationRecord
   has_many :rentals
   has_many :offers
   has_many :offers, through: :rentals
-  validates :username, presence: true
-  validates :email, presence: true
-  validates :last_name, presence: true
-  validates :first_name, presence: true
-  validates :phone_number, presence: true
-  validates :profile_picture_url, presence: true
+  has_one_attached :photo
+  # validates :username, presence: true
+  # validates :email, presence: true
+  # validates :last_name, presence: true
+  # validates :first_name, presence: true
+  # validates :phone_number, presence: true
+  # validates :profile_picture_url, presence: true
 end
