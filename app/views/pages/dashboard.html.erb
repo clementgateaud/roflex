@@ -1,0 +1,14 @@
+<div class="container mt-5 text-center">
+  <h1> Hello <%= current_user.first_name %> </h1>
+  <%= image_tag(current_user.profile_picture_url) %>
+  <ul>
+    <li>First name: <%= current_user.first_name %></li>
+    <li>Last name: <%= current_user.last_name %></li>
+    <li>Username: <%= current_user.username %></li>
+    <li>Email address: <%= current_user.email %></li>
+    <li>Phone number: <%= current_user.phone_number %></li>
+    <li>Address: <%= current_user.address %></li>
+  </ul>
+
+  <%= link_to "Back to home", root_path %>
+</div>
