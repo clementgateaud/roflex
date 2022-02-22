@@ -14,6 +14,7 @@ class OffersController < ApplicationController
 
   def new
     @offer = Offer.new
+    authorize @offer
   end
 
   def create
@@ -38,8 +39,8 @@ class OffersController < ApplicationController
   end
 
   def destroy
-    @offer.destroy
     authorize @offer
+    @offer.destroy
     redirect_to offers_path
   end
 
