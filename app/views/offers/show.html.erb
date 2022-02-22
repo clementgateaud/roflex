@@ -1,5 +1,3 @@
-<h1>Offers#show</h1>
-<p>Find me in app/views/offers/show.html.erb</p>
 
 <div class="container">
 <div class="row">
@@ -7,6 +5,11 @@
     <h1><%= @offer.name %></h1>
     <table class="table table-bordered">
       <tbody>
+        <%# <tr> %>
+          <%# @article.photos.each do |photo| %>
+            <%#= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+          <%#end %>
+        <%# </tr> %>
         <tr>
           <th scope="row">Price</th>
           <td><%= @offer.price %></td>
@@ -25,3 +28,4 @@
   </div>
 </div>
 </div>
+<%= link_to 'Back', offers_path %>

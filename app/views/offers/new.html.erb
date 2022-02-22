@@ -1,16 +1,6 @@
 <h1>Offers#new</h1>
 <p>Find me in app/views/offers/new.html.erb</p>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <h1>Create a new offer</h1>
-      <%= simple_form_for @offer do |f| %>
-        <%= f.input :name %>
-        <%= f.input :price %>
-        <%= f.input :description %>
-        <%= f.submit class: 'btn btn-primary' %>
-      <% end %>
-    </div>
-  </div>
-</div>
+<%= render 'form', offer: @offer %>
+
+<%= link_to 'Back', offers_path %>
