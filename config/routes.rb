@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'users/whishlist'
-  resources :users
+  # resources :users
   resources :rentals
   resources :offers
   devise_for :users
