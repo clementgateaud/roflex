@@ -5,6 +5,6 @@ class Offer < ApplicationRecord
   #has_many_attached :photos
   validates :name, presence: true
   validates :price, presence: true
-  #validates :photo_url, presence: true
+  has_one_attached :photo
   validates :description, presence: true
 end
