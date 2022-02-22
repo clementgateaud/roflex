@@ -1,4 +1,10 @@
-<div class="d-flex justify-content-center">
-<h1>All you rentals</h1>
+<div class="container">
+  <h1>All you rentals</h1>
+  <ul>
+    <% @rentals.each do |rental| %>
+      <li>Rental n°<%= rental.id %> <%= link_to("Show", rental_path(rental)) %>
+      <%= link_to("Edit", edit_rental_path(rental)) %>
+      <%= link_to("Delete", rental_path(rental), method: :delete, data: { confirm: "Are you sure ?"}) %>
+    <% end %>
+  </ul>
 </div>
-<ul>

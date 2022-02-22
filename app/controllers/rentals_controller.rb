@@ -1,6 +1,6 @@
 class RentalsController < ApplicationController
-  before_action :set_params, only: [:create]
   def index
+    ## Rental.where(user == curent_user)
     @rentals = Rental.all
   end
 
@@ -10,34 +10,52 @@ class RentalsController < ApplicationController
 
   def new
     @rental = Rental.new
+    @rental.total_amount = 42.42
+    @offer = Offer.find(params[:id])
+    @rental.offer = @offer
   end
 
   def create
-    @rental = Rental.new(set_params)
-    if @rental.save
-      redirect_to rental_index(params[:id])
+    @rental = Rental.new(rental_params)
+    # To replace by current_user
+    @rental.user = User.first
+    #
+    @rental.offer = Offer.find(params[:offer_id])
+    @rental.total_amount = params[:total_amount]
+    if @rental.save!
+      redirect_to rental_path(@rental)
     else
-      redirect_to :new
+      render :new
     end
   end
 
   def edit
-
+    @rental = Rental.find(params[:id])
   end
 
   def update
-
+    @rental = Rental.find(params[:id])
+    # To replace by current_user
+    @rental.user = User.first
+    #
+    @rental.offer = Offer.find(params[:offer_id])
+    @rental.total_amount = params[:total_amount]
+    if @rental.update(rental_params)
+      redirect_to rental_path(@rental)
+    else
+      render :new
+    end
   end
 
   def destroy
-    @retal = Rental.find(params[:id])
-    @restaurant.destroy
-    redirect_to rental_index(params[:id])
+    @rental = Rental.find(params[:id])
+    @rental.destroy
+    redirect_to rentals_path
   end
 
   private
 
-  def set_params
-    params.require(:rental).permit(:user_id, :offer_id, :start_time, :end_time)
+  def rental_params
+    params.require(:rental).permit(:user_id, :offer_id, :start_time, :end_time, :total_amount)
   end
 end
