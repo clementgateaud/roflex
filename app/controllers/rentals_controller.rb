@@ -1,7 +1,7 @@
 class RentalsController < ApplicationController
   def index
     ## Rental.where(user == curent_user)
-    @rentals = Rental.all
+    @rentals = Rental.where(user: current_user)
   end
 
   def show
@@ -17,9 +17,7 @@ class RentalsController < ApplicationController
 
   def create
     @rental = Rental.new(rental_params)
-    # To replace by current_user
-    @rental.user = User.first
-    #
+    @rental.user = current_user
     @rental.offer = Offer.find(params[:offer_id])
     @rental.total_amount = params[:total_amount]
     if @rental.save!
@@ -35,9 +33,7 @@ class RentalsController < ApplicationController
 
   def update
     @rental = Rental.find(params[:id])
-    # To replace by current_user
-    @rental.user = User.first
-    #
+    @rental.user = current_user
     @rental.offer = Offer.find(params[:offer_id])
     @rental.total_amount = params[:total_amount]
     if @rental.update(rental_params)
