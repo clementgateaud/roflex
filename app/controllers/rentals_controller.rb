@@ -1,8 +1,8 @@
 class RentalsController < ApplicationController
   def index
     ## Rental.where(user == curent_user)
-    @rentals = Rental.where(user: current_user)
-    @rentals = policy_scope(Rental).order(created_at: :desc)
+    # @rentals = Rental.where(user: current_user)
+    @rentals = policy_scope(Rental).where(user: current_user)
   end
 
   def show
