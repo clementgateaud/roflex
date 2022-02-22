@@ -1,6 +1,13 @@
 <div class="container mt-5 text-center">
   <h1> Hello <%= @user.first_name %> </h1>
-  <%= image_tag(@user.profile_picture_url) %>
+  <% if @user.photo.attached? %>
+    <%= cl_image_tag(@user.profile_picture_url) %>
+  <% end %>
+  <% if @user.photo.attached? %>
+    <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+  <% else %>
+    <img src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0="/>
+  <% end %>
   <ul>
     <li>First name: <%= @user.first_name %></li>
     <li>Last name: <%= @user.last_name %></li>

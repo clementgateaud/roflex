@@ -5,15 +5,22 @@
       <div class="col-sm-6 col-md-4 mb-3">
         <%= link_to offer, class:"card-offer-link" do %>
           <div class="card-offer">
-            <%= cl_image_tag offer.photo.key, height: 300, width: 400, crop: :fill %>
-            <%# <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" /> %>
+            <% if offer.photo.attached? %>
+              <%= cl_image_tag offer.photo.key, height: 300, width: 400, crop: :fill %>
+            <% else %>
+              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <% end %>
             <div class="card-offer-infos">
               <div>
                 <h2><%= offer.name %></h2>
                 <p><%= offer.description %></p>
               </div>
               <h2 class="card-offer-pricing"><%= offer.price %>€</h2>
-              <img src= <%= offer.user.profile_picture_url %> class="card-offer-user avatar-bordered" />
+              <% if offer.user.photo.attached? %>
+                <%= cl_image_tag offer.user.photo.key, height: 300, width: 400, crop: :fill, class:"card-offer-user avatar-bordered" %>
+              <% else %>
+                <img src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=" class="card-offer-user avatar-bordered" />
+              <% end %>
             </div>
           </div>
         <% end %>
