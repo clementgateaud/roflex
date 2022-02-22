@@ -1,25 +1,29 @@
-<table>
-  <thead>
-    <tr>
-      <h1>Toutes les offres</h1>
-      <p>Quel sera votre prochain bijoux pour flexer en soirée</p>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container my-4">
+  <h1>All offers</h1>
+  <div class="row">
     <% @offers.each do |offer| %>
-      <tr>
-        <td><%= offer.name %></td>
-        <td><%= offer.price %></td>
-        <td><%= link_to 'Show', offer %></td>
-        <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
-        <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="col-sm-6 col-md-4 mb-3">
+        <%= link_to offer, class:"card-offer-link" do %>
+          <div class="card-offer">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <div class="card-offer-infos">
+              <div>
+                <h2><%= offer.name %></h2>
+                <p><%= offer.description %></p>
+              </div>
+              <h2 class="card-offer-pricing"><%= offer.price %>€</h2>
+              <img src= <%= offer.user.profile_picture_url %> class="card-offer-user avatar-bordered" />
+            </div>
+          </div>
+        <% end %>
+        <% if offer.user == current_user %>
+          <div class="mb-3 d-flex justify-content-end">
+            <%= link_to 'Edit', edit_offer_path(offer) %>
+            <%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Offer', new_offer_path %>
+  </div>
+  <%= link_to 'New Offer', new_offer_path, class:"btn btn-primary" %>
+</div>

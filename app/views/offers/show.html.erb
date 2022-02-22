@@ -1,31 +1,9 @@
-
-<div class="container">
-<div class="row">
-  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-    <h1><%= @offer.name %></h1>
-    <table class="table table-bordered">
-      <tbody>
-        <%# <tr> %>
-          <%# @article.photos.each do |photo| %>
-            <%#= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-          <%#end %>
-        <%# </tr> %>
-        <tr>
-          <th scope="row">Price</th>
-          <td><%= @offer.price %></td>
-        </tr>
-        <tr>
-          <th scope="row">Description</th>
-          <td><%= @offer.description %></td>
-        </tr>
-        <tr>
-          <th scope="row">Availabilitity</th>
-          <td><%= @offer.availability %></td>
-        </tr>
-      </tbody>
-    </table>
-    <%= link_to 'Rent', new_rental_path(@offer.id) %>
-  </div>
+<div class="container my-4">
+  <h1><%= @offer.name %></h1>
+  <%# <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill %> %>
+  <p>Price: <%= @offer.price %></p>
+  <p>Description: <%= @offer.description %></p>
+  <p>Availability: <%= @offer.availability %></p>
+  <%= link_to 'Rent', new_rental_path(@offer.id), class:"btn btn-primary" %>
+  <%= link_to 'Back', offers_path, class:"btn btn-primary" %>
 </div>
-</div>
-<%= link_to 'Back', offers_path %>

@@ -1,0 +1,49 @@
+.card-offer {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-offer > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-offer h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-offer p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-offer .card-offer-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-offer-infos .card-offer-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+  background-color: white;
+}
+
+.card-offer-link {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    text-decoration: none;
+    color: black;
+  }
+}
