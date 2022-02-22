@@ -1,2 +1,8 @@
-<h1>Rentals#show</h1>
-<p>Find me in app/views/rentals/show.html.erb</p>
+<div class="container">
+  <h1>Rental n°<%= @rental.id %></h1>
+  <p>Locataire : <%= @rental.user.username %></p>
+  <p>Nom de l'offre : <%= @rental.offer.name %></p>
+  <p>Prix total : <%= @rental.total_amount %></p>
+  <p>Du <%= @rental.start_time %> au <%= @rental.end_time %></p>
+  <%= link_to("Back", rentals_path, class:"btn btn-primary") %>
+</div>
