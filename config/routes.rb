@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   get '/offers/:id/rent', to: 'rentals#new'
   resources :offers
   devise_for :users
-  get '/users/:id', to: 'users#show'
+  get '/users/:id', to: 'users#show', as: :user
   root to: 'pages#home'
 end
