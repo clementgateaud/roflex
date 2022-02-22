@@ -1,11 +1,15 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: :show
 
   def index
-    @offers = Offer.all
+    # @offers = Offer.all
+    @offers = policy_scope(Offer).order(created_at: :desc)
   end
 
   def show
+    authorize @offer
   end
 
   def new
@@ -15,6 +19,7 @@ class OffersController < ApplicationController
   def create
     @offer = Offer.new(offer_params)
     @offer.user = current_user
+    authorize @offer
     if @offer.save!
       redirect_to offer_path(@offer), notice: 'Offer was successfully created.'
     else
@@ -23,15 +28,18 @@ class OffersController < ApplicationController
   end
 
   def edit
+    authorize @offer
   end
 
   def update
+    authorize @offer
     @offer.update(offer_params)
     redirect_to offer_path(@offer)
   end
 
   def destroy
     @offer.destroy
+    authorize @offer
     redirect_to offers_path
   end
 

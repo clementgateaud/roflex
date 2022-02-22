@@ -2,14 +2,17 @@ class RentalsController < ApplicationController
   def index
     ## Rental.where(user == curent_user)
     @rentals = Rental.where(user: current_user)
+    @rentals = policy_scope(Rental).order(created_at: :desc)
   end
 
   def show
     @rental = Rental.find(params[:id])
+    authorize @rental
   end
 
   def new
     @rental = Rental.new
+    authorize @rental
     @rental.total_amount = 42.42
     @offer = Offer.find(params[:id])
     @rental.offer = @offer
@@ -17,6 +20,7 @@ class RentalsController < ApplicationController
 
   def create
     @rental = Rental.new(rental_params)
+    authorize @rental
     @rental.user = current_user
     @rental.offer = Offer.find(params[:offer_id])
     @rental.total_amount = params[:total_amount]
@@ -29,10 +33,12 @@ class RentalsController < ApplicationController
 
   def edit
     @rental = Rental.find(params[:id])
+    authorize @rental
   end
 
   def update
     @rental = Rental.find(params[:id])
+    authorize @rental
     @rental.user = current_user
     @rental.offer = Offer.find(params[:offer_id])
     @rental.total_amount = params[:total_amount]
@@ -45,6 +51,7 @@ class RentalsController < ApplicationController
 
   def destroy
     @rental = Rental.find(params[:id])
+    authorize @rental
     @rental.destroy
     redirect_to rentals_path
   end
