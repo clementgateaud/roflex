@@ -13,19 +13,19 @@
             <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">My locations</a>
+            <%= link_to "offers", offers_path, class: "nav-link"%>
           </li>
           <li class="nav-item dropdown">
-            <% if @user == current_user %>
-              <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src= "<%= @user.profile_picture_url %>"/>
+            <% if user_signed_in? %>
+              <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src= "<%= current_user.profile_picture_url %>"/>
             <% else %>
               <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn.futura-sciences.com/buildsv6/images/largeoriginal/8/9/e/89e85604ff_50165234_diamant-2-alrosa.jpg"/>
             <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <% if @user == current_user %>
-                <%= link_to "Profile",user_path(@user),class: "text-decoration-none dropdown-item" %>
-                <%= link_to "Wish-list",users_whishlist_path(@user),class: "text-decoration-none dropdown-item" %>
-                <%= link_to "Edit Profile",edit_user_path(@user),class: "text-decoration-none dropdown-item" %>
+              <% if user_signed_in? %>
+                <%= link_to "Profile",user_path(current_user),class: "text-decoration-none dropdown-item" %>
+                <%= link_to "Wish-list",users_whishlist_path(current_user),class: "text-decoration-none dropdown-item" %>
+                <%= link_to "Edit Profile",edit_user_registration_path(current_user),class: "text-decoration-none dropdown-item" %>
                 <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
               <% else %>
                <%= link_to "Sign in", user_session_path, class: "dropdown-item" %>
