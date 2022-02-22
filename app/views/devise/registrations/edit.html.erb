@@ -9,7 +9,14 @@
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
-
+    <%= f.input :first_name, required: true, autofocus: true, label: false, placeholder: "First name" %>
+    <%= f.input :last_name, required: true, autofocus: true, label: false, placeholder: "Last name" %>
+    <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" }, label: false, placeholder: "Email address" %>
+    <%= f.input :phone_number, required: true, autofocus: true, label: false, placeholder: "Phone number" %>
+    <%= f.input :photo, as: :file, required: true, label: false, placeholder: "Profile picture" %>
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
