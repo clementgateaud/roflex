@@ -9,38 +9,38 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Home</a>
-          </li>
           <li class="nav-item">
             <%= link_to "Offers", offers_path, class: "nav-link"%>
           </li>
           <li class="nav-item">
             <%= link_to "My rentals", rentals_path, class: "nav-link"%>
           </li>
-          <li class="nav-item dropdown">
-            <% if user_signed_in? %>
+          <% if user_signed_in? %>
+            <li class="nav-item dropdown">
               <% if current_user.photo.attached? %>
                 <%= cl_image_tag current_user.photo.key, class:"avatar dropdown-toggle", id:"navbarDropdown", data: { bs_toggle: "dropdown"}, aria: {haspopup: "true", expanded:false} %>
               <% else %>
-                <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src= "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0"/>
+                <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src= "http://sanjaymotels.com/wp-content/uploads/2019/01/testimony.png"/>
               <% end %>
-            <% else %>
-              <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src= "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0"/>
-            <% end %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <% if user_signed_in? %>
-                <%= link_to "Profile",dashboard_path,class: "text-decoration-none dropdown-item" %>
-                <%= link_to "Wish-list",users_whishlist_path(current_user),class: "text-decoration-none dropdown-item" %>
-                <%= link_to "Edit Profile",edit_user_registration_path(current_user),class: "text-decoration-none dropdown-item" %>
-                <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
-              <% else %>
-               <%= link_to "Sign in", user_session_path, class: "dropdown-item" %>
-              <% end %>
-            </div>
-          </li>
-          <!--li class="nav-item"-->
-          <!--/li-->
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <% if user_signed_in? %>
+                  <%= link_to "Profile",dashboard_path,class: "text-decoration-none dropdown-item" %>
+                  <%= link_to "Wish-list",users_whishlist_path(current_user),class: "text-decoration-none dropdown-item" %>
+                  <%= link_to "Edit Profile",edit_user_registration_path(current_user),class: "text-decoration-none dropdown-item" %>
+                  <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
+                <% else %>
+                  <%= link_to "Sign in", user_session_path, class: "dropdown-item" %>
+                <% end %>
+              </div>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Sign up", rentals_path, class: "nav-link"%>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Sign in", rentals_path, class: "nav-link"%>
+            </li>
+          <% end %>
       </ul>
     </div>
   </div>
