@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+require "open-uri"
+require "nokogiri"
 
 3.times do
   User.create!(username: Faker::Internet.username, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
@@ -13,9 +15,13 @@ require 'faker'
   address: Faker::Address.street_address, password:'adminadmin')
 end
 
-3.times do
+html = URI.open("https://www.etsy.com/search?q=rolex").read
+doc = Nokogiri::HTML(html, nil, "utf-8")
+results = []
+doc.search(".wt-width-full.wt-height-full.wt-display-block.wt-position-absolute").first(30).each do |element|
+  photo_url = element.attributes["src"]
   Offer.create!(name: Faker::Commerce.product_name, price: rand(0.0..100.0).round(1),description: Faker::Lorem.paragraph,
-  availability: true, photo_url: Faker::LoremFlickr.image, user: User.all.sample)
+ availability: true, photo_url: photo_url, user: User.all.sample)
 end
 
 3.times do
