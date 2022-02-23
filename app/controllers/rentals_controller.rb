@@ -1,7 +1,5 @@
 class RentalsController < ApplicationController
   def index
-    ## Rental.where(user == curent_user)
-    # @rentals = Rental.where(user: current_user)
     @rentals = policy_scope(Rental).where(user: current_user)
   end
 
@@ -10,20 +8,13 @@ class RentalsController < ApplicationController
     authorize @rental
   end
 
-  def new
-    @rental = Rental.new
-    authorize @rental
-    @offer = Offer.find(params[:id])
-    @rental.offer = @offer
-  end
-
   def create
     @rental = Rental.new(rental_params)
     authorize @rental
     @rental.user = current_user
     @rental.offer = Offer.find(params[:offer_id])
-    nb_days = (@rental.end_time - @rental.start_time).to_i
-    @rental.total_amount = nb_days * @rental.offer.price
+    nb_days = (@rental.end_time - @rental.start_time).to_i + 1
+    @rental.total_amount = (nb_days * @rental.offer.price).round(2)
     if @rental.save!
       redirect_to rental_path(@rental)
     else
@@ -39,15 +30,10 @@ class RentalsController < ApplicationController
   def update
     @rental = Rental.find(params[:id])
     authorize @rental
-    @rental.user = current_user
-    @rental.offer = Offer.find(params[:offer_id])
-    nb_days = (@rental.end_time - @rental.start_time).to_i
-    @rental.total_amount = nb_days * @rental.offer.price
-    if @rental.update(rental_params)
-      redirect_to rental_path(@rental)
-    else
-      render :new
-    end
+    @rental.update(rental_params)
+    nb_days = (@rental.end_time - @rental.start_time).to_i + 1
+    @rental.update(total_amount: (nb_days * @rental.offer.price).round(2))
+    redirect_to rental_path(@rental)
   end
 
   def destroy

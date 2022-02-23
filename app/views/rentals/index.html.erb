@@ -15,7 +15,7 @@
                 <h2><%= rental.offer.name %></h2>
                 <p><%= rental.offer.description %></p>
               </div>
-              <h2 class="card-offer-pricing"><%= rental.total_amount %></h2>
+              <h2 class="card-offer-pricing"><%= '%.2f' % rental.total_amount %>€</h2>
               <% if rental.offer.user.photo.attached? %>
                 <%= cl_image_tag rental.offer.user.photo.key, class:"card-offer-user avatar-bordered" %>
               <% else %>

@@ -15,7 +15,7 @@
                 <p><%= offer.description %></p>
                 <p>📍 <strong><%= offer.address %></strong></p>
               </div>
-              <h2 class="card-offer-pricing"><%= offer.price %>€/day</h2>
+              <h2 class="card-offer-pricing"><%= '%.2f' % offer.price %>€/day</h2>
               <% if offer.user.photo.attached? %>
                 <%= cl_image_tag offer.user.photo.key, class:"card-offer-user avatar-bordered" %>
               <% else %>
