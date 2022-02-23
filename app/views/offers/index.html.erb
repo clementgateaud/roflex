@@ -15,7 +15,7 @@
                 <h2><%= offer.name %></h2>
                 <p><%= offer.description %></p>
               </div>
-              <h2 class="card-offer-pricing"><%= offer.price %>€</h2>
+              <h2 class="card-offer-pricing"><%= offer.price %>€/day</h2>
               <% if offer.user.photo.attached? %>
                 <%= cl_image_tag offer.user.photo.key, class:"card-offer-user avatar-bordered" %>
               <% else %>
