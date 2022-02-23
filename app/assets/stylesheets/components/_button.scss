@@ -39,3 +39,20 @@
   background: linear-gradient(#147EFF, #0F67DA);
   color: white;
 }
+
+.btn-rent {
+  color: white;
+  text-decoration: none;
+  padding: 16px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: #3ac162;
+  transition: background 0.3s ease;
+}
+
+.btn-rent:hover {
+  opacity: 1;
+  background: #3ac162;
+  text-decoration: none;
+  color: white;
+}
