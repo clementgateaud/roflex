@@ -1,8 +1,11 @@
 <div class="container mt-5 text-center">
-  <h1> Hello <%= current_user.first_name %> </h1>
+  <h1> Hello <%= current_user.first_name %> !</h1>
+
   <% if current_user.photo.attached? %>
-    <%= cl_image_tag current_user.photo.key %>
+    <%= cl_image_tag current_user.photo.key, class:"avatar-profile" %>
   <% end %>
+
+<div class="user-info">
   <ul>
     <li>First name: <%= current_user.first_name %></li>
     <li>Last name: <%= current_user.last_name %></li>
@@ -10,6 +13,9 @@
     <li>Email address: <%= current_user.email %></li>
     <li>Phone number: <%= current_user.phone_number %></li>
   </ul>
+</div>
 
-  <%= link_to "Back to home", root_path %>
+
+  <%= link_to "Edit your profile", edit_user_registration_path, class:"btn-rent" %>
+  <%= link_to "Back to home", root_path, class:"btn-rent" %>
 </div>
