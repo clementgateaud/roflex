@@ -4,7 +4,6 @@ class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
 
   def index
-    # @offers = Offer.all
     @offers = policy_scope(Offer).order(created_at: :desc)
 
     @markers = @offers.geocoded.map do |offer|
@@ -18,6 +17,8 @@ class OffersController < ApplicationController
 
   def show
     authorize @offer
+    @rental = Rental.new
+    @rental.offer = @offer
   end
 
   def new
@@ -28,6 +29,7 @@ class OffersController < ApplicationController
   def create
     @offer = Offer.new(offer_params)
     @offer.user = current_user
+    @offer.price = @offer.price.round(2)
     authorize @offer
     if @offer.save!
       redirect_to offer_path(@offer), notice: 'Offer was successfully created.'

@@ -1,11 +1,16 @@
-<div class="container">
-  <p>Offer: <%= @rental.offer.name %></p>
-  <%= simple_form_for @rental do |f| %>
-    <%= f.input :start_time %>
-    <%= f.input :end_time %>
-    <%= hidden_field_tag :offer_id, @rental.offer.id %>
-    <%= hidden_field_tag :total_amount, @rental.total_amount %>
-    <p>Price: <%= @rental.total_amount %></p>
-    <%= f.button :submit, class:"btn btn-primary" %>
-  <% end %>
+<div class="container my-4">
+  <div class="info-container">
+    <h1 class="title"><%= @rental.offer.name %></h1>
+    <p><%= @rental.offer.description %></p>
+    <p>Price per day: <strong><span id="priceperday"><%= '%.2f' % @rental.offer.price %></span> €</strong></p>
+  </div>
+  <div class="action-container" data-controller="dynamicprice">
+    <%= simple_form_for @rental do |f| %>
+      <%= f.input :start_time, as: :date, html5: true,label: "Start date", input_html:{data:{action:"change->dynamicprice#updatePrice"}} %>
+      <%= f.input :end_time, as: :date, html5: true, label: "End date", input_html:{data:{action:"change->dynamicprice#updatePrice"}} %>
+      <%= hidden_field_tag :offer_id, @rental.offer.id %>
+      <p>Total price: <span data-dynamicprice-target="price" id="realprice"><%= '%.2f' % @rental.total_amount %> €</span></p>
+      <%= f.submit "Rent it", class:"btn btn-primary", id:"rent-btn" %>
+    <% end %>
+  </div>
 </div>

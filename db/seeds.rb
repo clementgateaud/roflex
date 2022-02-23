@@ -23,7 +23,10 @@ doc = Nokogiri::HTML(html, nil, "utf-8")
 doc.search(".wt-width-full.wt-height-full.wt-display-block.wt-position-absolute").first(10).each do |element|
   file = URI.open(element.attributes["src"])
   address = Faker::Address.country
-  offer = Offer.create!(name: Faker::Commerce.product_name, price: rand(20.0..500.0).round(1), description: Faker::Lorem.paragraph,
+  while address.nil?
+    address = Faker::Address.country
+  end
+  offer = Offer.create!(name: Faker::Commerce.product_name, price: rand(20..500).round(2), description: Faker::Lorem.paragraph,
  availability: true, user: User.all.sample, address: address, latitude: Geocoder.coordinates(address)[0], longitude: Geocoder.coordinates(address)[1])
   offer.photo.attach(io: file, filename: 'a.png', content_type: 'image/png')
 end
