@@ -16,11 +16,11 @@
   </head>
 
   <body>
+    <div class="wrapper">
       <%= render 'shared/navbar' %>
       <%= render 'shared/flashes' %>
       <%= yield %>
-    <div class = "mb 0">
-      <%= render 'shared/footer' %>
     </div>
+    <%= render 'shared/footer' %>
   </body>
 </html>
