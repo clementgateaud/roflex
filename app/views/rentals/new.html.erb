@@ -1,11 +1,12 @@
 <div class="container">
   <p>Offer: <%= @rental.offer.name %></p>
+  <p>Price: <%= @rental.offer.price %>€/day</p>
   <%= simple_form_for @rental do |f| %>
     <%= f.input :start_time %>
     <%= f.input :end_time %>
     <%= hidden_field_tag :offer_id, @rental.offer.id %>
     <%= hidden_field_tag :total_amount, @rental.total_amount %>
-    <p>Price: <%= @rental.total_amount %></p>
     <%= f.button :submit, class:"btn btn-primary" %>
   <% end %>
 </div>
+<%= console %>
