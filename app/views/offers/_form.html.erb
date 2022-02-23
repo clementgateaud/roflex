@@ -4,7 +4,7 @@
       <h1>Create a new offer</h1>
       <%= simple_form_for @offer do |f| %>
         <%= f.input :name %>
-        <%= f.input :price %>
+        <%= f.input :price, label: "Price per day" %>
         <%= f.input :description %>
         <%= f.input :photo, as: :file %>
         <%= f.input :address,
