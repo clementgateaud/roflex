@@ -1,10 +1,34 @@
-<div class="container">
+<div class="container my-4">
   <h1>All you rentals</h1>
-  <ul>
+  <div class="row">
     <% @rentals.each do |rental| %>
-      <li>Rental n°<%= rental.id %> <%= link_to("Show", rental_path(rental)) %>
-      <%= link_to("Edit", edit_rental_path(rental)) %>
-      <%= link_to("Delete", rental_path(rental), method: :delete, data: { confirm: "Are you sure ?"}) %>
+      <div class="col-sm-6 col-md-4 mb-3">
+        <%= link_to rental, class:"card-offer-link" do %>
+          <div class="card-offer">
+            <% if rental.offer.photo.attached? %>
+              <%= cl_image_tag rental.offer.photo.key %>
+            <% else %>
+              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <% end %>
+            <div class="card-offer-infos">
+              <div>
+                <h2><%= rental.offer.name %></h2>
+                <p><%= rental.offer.description %></p>
+              </div>
+              <h2 class="card-offer-pricing"><%= rental.total_amount %></h2>
+              <% if rental.offer.user.photo.attached? %>
+                <%= cl_image_tag rental.offer.user.photo.key, class:"card-offer-user avatar-bordered" %>
+              <% else %>
+                <img src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=" class="card-offer-user avatar-bordered" />
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        <div class="mb-3 d-flex justify-content-end">
+          <%= link_to 'Edit', edit_rental_path(rental) %>
+          <%= link_to 'Delete', rental_path(rental), method: :delete, data: { confirm: "Are you sure ?"} %>
+        </div>
+      </div>
     <% end %>
-  </ul>
+  </div>
 </div>

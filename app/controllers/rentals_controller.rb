@@ -13,7 +13,6 @@ class RentalsController < ApplicationController
   def new
     @rental = Rental.new
     authorize @rental
-    @rental.total_amount = 42.42
     @offer = Offer.find(params[:id])
     @rental.offer = @offer
   end
@@ -23,7 +22,8 @@ class RentalsController < ApplicationController
     authorize @rental
     @rental.user = current_user
     @rental.offer = Offer.find(params[:offer_id])
-    @rental.total_amount = params[:total_amount]
+    nb_days = (@rental.end_time - @rental.start_time).to_i
+    @rental.total_amount = nb_days * @rental.offer.price
     if @rental.save!
       redirect_to rental_path(@rental)
     else

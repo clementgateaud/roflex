@@ -12,23 +12,22 @@ require "nokogiri"
 3.times do
   user = User.create(username: Faker::Internet.username, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
   email: Faker::Internet.email, phone_number: Faker::PhoneNumber.phone_number,
-  address: Faker::Address.street_address, password:'adminadmin')
+  password:'adminadmin')
   file = URI.open(Faker::Avatar.image)
   user.photo.attach(io: file, filename: 'a.png', content_type: 'image/png')
 end
 
 html = URI.open("https://www.etsy.com/search?q=rolex").read
 doc = Nokogiri::HTML(html, nil, "utf-8")
-doc.search(".wt-width-full.wt-height-full.wt-display-block.wt-position-absolute").first(30).each do |element|
+doc.search(".wt-width-full.wt-height-full.wt-display-block.wt-position-absolute").first(10).each do |element|
   file = URI.open(element.attributes["src"])
-  offer = Offer.create!(name: Faker::Commerce.product_name, price: rand(0.0..100.0).round(1), description: Faker::Lorem.paragraph,
+  offer = Offer.create!(name: Faker::Commerce.product_name, price: rand(20.0..500.0).round(1), description: Faker::Lorem.paragraph,
  availability: true, user: User.all.sample)
   offer.photo.attach(io: file, filename: 'a.png', content_type: 'image/png')
-
 end
 
-3.times do
-  Rental.create!(start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
-  end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now), total_amount: rand(0.0..100.0).round(1),
-  user: User.all.sample, offer: Offer.all.sample)
-end
+# 3.times do
+#   Rental.create!(start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+#   end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now), total_amount: rand(0.0..100.0).round(1),
+#   user: User.all.sample, offer: Offer.all.sample)
+# end
