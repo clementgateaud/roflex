@@ -5,6 +5,9 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def wishlist
+  end
+
   private
 
   def user_params
