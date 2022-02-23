@@ -14,7 +14,7 @@
               <div>
                 <h2><%= offer.name %></h2>
                 <p><%= offer.description %></p>
-                <span> <%= offer.address %></span>
+                <p>📍 <strong><%= offer.address %></strong></p>
               </div>
               <h2 class="card-offer-pricing"><%= offer.price %>€/day</h2>
               <% if offer.user.photo.attached? %>

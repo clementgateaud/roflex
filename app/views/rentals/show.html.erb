@@ -2,11 +2,11 @@
 <h1>Rental #<%= @rental.id %></h1>
   <div class="row">
     <div class="col-sm-4">
-      <%= cl_image_tag @rental.offer.photo.key, class:"w-100" %>
+      <%= cl_image_tag @rental.offer.photo.key, class:"w-100 mb-3" %>
     </div>
     <div class="col-sm-8">
      <div class="info-container">
-        <h2><%= @rental.offer.name %></h2>
+      <h2><%= @rental.offer.name %></h2>
       <p><%= @rental.offer.description %></p>
       <h4>Total price</h4>
       <p><strong><%= @rental.total_amount %> €</strong></p>
