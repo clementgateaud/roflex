@@ -14,6 +14,7 @@
               <div>
                 <h2><%= offer.name %></h2>
                 <p><%= offer.description %></p>
+                <span> <%= offer.address %></span>
               </div>
               <h2 class="card-offer-pricing"><%= offer.price %>€/day</h2>
               <% if offer.user.photo.attached? %>
@@ -24,6 +25,7 @@
             </div>
           </div>
         <% end %>
+
         <% if offer.user == current_user %>
           <div class="mb-3 d-flex justify-content-end">
             <%= link_to 'Edit', edit_offer_path(offer) %>
@@ -34,4 +36,11 @@
     <% end %>
   </div>
   <%= link_to 'New Offer', new_offer_path, class:"btn btn-primary" %>
+
+  <div style="width: 100%; height: 600px;"
+          data-controller="mapbox"
+          data-mapbox-markers-value="<%= @markers.to_json %>"
+          data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
 </div>
