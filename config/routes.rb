@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/whishlist'
+  get 'users/wishlist', to: 'users#wishlist'
   resources :rentals, except: %i[new]
   get '/offers/:id/rent', to: 'rentals#new', as: :new_rental
   resources :offers
