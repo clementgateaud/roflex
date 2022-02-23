@@ -1,9 +1,21 @@
+
+
+
 <div class="container my-4">
-  <h1><%= @offer.name %></h1>
-  <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill %>
-  <p>Price: <%= @offer.price %></p>
-  <p>Description: <%= @offer.description %></p>
-  <p>Availability: <%= @offer.availability %></p>
-  <%= link_to 'Rent', new_rental_path(@offer.id), class:"btn btn-primary" %>
-  <%= link_to 'Back', offers_path, class:"btn btn-primary" %>
+  <div class="row">
+    <div class="col-sm-4">
+      <%= cl_image_tag @offer.photo.key, class:"w-100" %>
+    </div>
+    <div class="col-sm-8">
+    <div class="info-container">
+      <h1><%= @offer.name %></h1>
+      <p><%= @offer.description %></p>
+      <h4>Price per day</h4>
+      <p><strong><%= @offer.price %> €</strong></p>
+    </div>
+    <div class="action-container">
+      <%= link_to 'Rent it now !', new_rental_path(@offer.id), class:"btn-rent" %>
+    </div>
+    </div>
+  </div>
 </div>
