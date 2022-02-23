@@ -21,7 +21,7 @@ html = URI.open("https://www.etsy.com/search?q=rolex").read
 doc = Nokogiri::HTML(html, nil, "utf-8")
 doc.search(".wt-width-full.wt-height-full.wt-display-block.wt-position-absolute").first(10).each do |element|
   file = URI.open(element.attributes["src"])
-  offer = Offer.create!(name: Faker::Commerce.product_name, price: rand(0.0..100.0).round(1), description: Faker::Lorem.paragraph,
+  offer = Offer.create!(name: Faker::Commerce.product_name, price: rand(20.0..500.0).round(1), description: Faker::Lorem.paragraph,
  availability: true, user: User.all.sample)
   offer.photo.attach(io: file, filename: 'a.png', content_type: 'image/png')
 
