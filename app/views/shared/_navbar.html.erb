@@ -24,7 +24,7 @@
               <% end %>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                   <%= link_to "Profile",dashboard_path,class: "text-decoration-none dropdown-item" %>
-                  <%= link_to "Wish-list",users_whishlist_path(current_user),class: "text-decoration-none dropdown-item" %>
+                  <%# <%= link_to "Wish-list",users_whishlist_path(current_user),class: "text-decoration-none dropdown-item" %>
                   <%= link_to "Edit Profile",edit_user_registration_path(current_user),class: "text-decoration-none dropdown-item" %>
                   <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
               </div>
