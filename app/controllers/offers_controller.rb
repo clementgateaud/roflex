@@ -6,6 +6,14 @@ class OffersController < ApplicationController
   def index
     # @offers = Offer.all
     @offers = policy_scope(Offer).order(created_at: :desc)
+
+    @markers = @offers.geocoded.map do |offer|
+      {
+        lat: offer.latitude,
+        lng: offer.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { offer: offer })
+      }
+    end
   end
 
   def show
@@ -51,6 +59,6 @@ class OffersController < ApplicationController
   end
 
   def offer_params
-    params.require(:offer).permit(:name, :price, :photo, :description, :avaibility)
+    params.require(:offer).permit(:name, :price, :photo, :description, :avaibility, :address)
   end
 end
