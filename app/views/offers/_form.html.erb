@@ -1,18 +1,14 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <h1>Create a new offer</h1>
-      <%= simple_form_for @offer do |f| %>
-        <%= f.input :name %>
-        <%= f.input :price, label: "Price per day" %>
-        <%= f.input :description %>
-        <%= f.input :photo, as: :file %>
-        <%= f.input :address,
-              input_html: { data: { geocoder_target: "address" }, class: "d-none" },
-              wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
-        <%#= f.input :photo_url, as: :file, input_html: { multiple: true }  %>
-        <%= f.submit class: 'btn btn-primary' %>
-      <% end %>
-    </div>
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    <%= simple_form_for @offer do |f| %>
+      <%= f.input :name %>
+      <%= f.input :price, label: "Price per day" %>
+      <%= f.input :description %>
+      <%= f.input :photo, as: :file %>
+      <%= f.input :address,
+            input_html: { data: { geocoder_target: "address" }, class: "d-none" },
+            wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
+      <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
   </div>
 </div>
