@@ -1,8 +1,17 @@
-<div class="container">
-  <h1>Rental n°<%= @rental.id %></h1>
-  <p>Locataire : <%= @rental.user.username %></p>
-  <p>Nom de l'offre : <%= @rental.offer.name %></p>
-  <p>Prix total : <%= @rental.total_amount %></p>
-  <p>Du <%= @rental.start_time %> au <%= @rental.end_time %></p>
-  <%= link_to("Back", rentals_path, class:"btn btn-primary") %>
+<div class="container my-4">
+  <h1>Rental #<%= @rental.id %></h1>
+  <h2><%= @rental.offer.name %></h2>
+  <div class="row">
+    <div class="col-sm-4">
+      <%= cl_image_tag @rental.offer.photo.key, class:"w-100" %>
+    </div>
+    <div class="col-sm-8">
+      <h4>Product description</h4>
+      <p><%= @rental.offer.description %></p>
+      <h4>Total price</h4>
+      <p><strong><%= @rental.total_amount %> €</strong></p>
+      <h4>Rental dates</h4>
+      <p>From <strong><%= @rental.start_time %></strong>  to <strong><%= @rental.end_time %></strong> </p>
+    </div>
+  </div>
 </div>
