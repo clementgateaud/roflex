@@ -8,7 +8,7 @@
       <h2 class="title"><%= @rental.offer.name %></h2>
       <p><%= @rental.offer.description %></p>
       <h4>Total price</h4>
-      <p><strong><%= @rental.total_amount %> €</strong></p>
+      <p><strong><%= '%.2f' % @rental.total_amount %> €</strong></p>
       <h4>Rental dates</h4>
       <p>From <strong><%= @rental.start_time %></strong>  to <strong><%= @rental.end_time %></strong> </p>
     </div>
