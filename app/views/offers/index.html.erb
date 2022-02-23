@@ -1,5 +1,5 @@
-<div class="container my-4">
-  <div class="row">
+<div class="container d-flex my-3">
+  <div class="row col-md-8 col-xs-12">
     <% @offers.each do |offer| %>
       <div class="col-sm-6 col-md-4 mb-3">
         <%= link_to offer, class:"card-offer-link" do %>
@@ -9,6 +9,7 @@
             <% else %>
               <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
             <% end %>
+
             <div class="card-offer-infos">
               <div>
                 <h2><%= offer.name %></h2>
@@ -22,17 +23,18 @@
                 <img src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=" class="card-offer-user avatar-bordered" />
               <% end %>
             </div>
+
           </div>
         <% end %>
       </div>
     <% end %>
+    <div>
+      <%= link_to 'New Offer', new_offer_path, class:"btn btn-primary" %>
+    </div>
   </div>
-  <%= link_to 'New Offer', new_offer_path, class:"btn btn-primary" %>
-
-  <div style="width: 100%; height: 600px;"
+  <div class="col-md-4 col-xs-12 map"
           data-controller="mapbox"
           data-mapbox-markers-value="<%= @markers.to_json %>"
           data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-
 </div>
