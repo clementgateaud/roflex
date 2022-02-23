@@ -2,9 +2,37 @@
   <div class="container">
     <h1>Rent beautiful watches and jewelry</h1>
     <p>The luxury you've always deserved.</p>
-    <%= link_to("See products", offers_path, class:"btn btn-flat") %>
+    <%= link_to("See products", offers_path, class:"btn btn-primary") %>
   </div>
 </div>
+
 <div class="container">
-  <h1>Welcome to Roflex</h1>
+  <h1 class = "m-3">Roflex selection for today</h1>
+   <div class="row">
+    <% @offers.first(3).each do |offer| %>
+        <div class="col-sm-6 col-md-4 mb-3">
+          <%= link_to offer, class:"card-offer-link" do %>
+            <div class="card-offer">
+              <% if offer.photo.attached? %>
+                <%= cl_image_tag offer.photo.key %>
+              <% else %>
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+              <% end %>
+              <div class="card-offer-infos">
+                <div>
+                  <h2><%= offer.name %></h2>
+                  <p><%= offer.description %></p>
+                </div>
+                <h2 class="card-offer-pricing"><%= offer.price %>€</h2>
+                <% if offer.user.photo.attached? %>
+                  <%= cl_image_tag offer.user.photo.key, class:"card-offer-user avatar-bordered" %>
+                <% else %>
+                  <img src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=" class="card-offer-user avatar-bordered" />
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
 </div>
