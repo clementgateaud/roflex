@@ -4,7 +4,11 @@ class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
 
   def index
-    @offers = policy_scope(Offer).order(created_at: :desc)
+    if params[:query].present?
+      @offers = policy_scope(Offer.search_by_name_and_description(params[:query]))
+    else
+      @offers = policy_scope(Offer).order(created_at: :desc)
+    end
 
     @markers = @offers.geocoded.map do |offer|
       {
