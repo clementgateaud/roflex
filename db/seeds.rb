@@ -118,3 +118,13 @@ p "#{Offer.count} offers are created"
 #   end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now), total_amount: rand(0.0..100.0).round(1),
 #   user: User.all.sample, offer: Offer.all.sample)
 # end
+
+p "Creating admin"
+
+admin = User.create(username: "jeanmicheladmin", first_name: "Jean-Michel", last_name: "Admin",
+  email: "admin@gmail.com", phone_number: "0600000000",
+  password:'adminadmin')
+fileadmin = URI.open("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShN0nuLT7HIpIANuDi6wbMKpeuCgZsl2PtAA&usqp=CAU")
+admin.photo.attach(io: fileadmin, filename: 'a.png', content_type: 'image/png')
+
+p "Admin created"
