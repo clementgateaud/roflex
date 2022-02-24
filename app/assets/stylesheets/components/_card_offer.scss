@@ -78,6 +78,26 @@
   height: auto;
 }
 
+.tag {
+  margin-left:10px !important;
+  color: white;
+  background-color: green;
+  padding:2px 10px;
+  border-radius: 5px;
+  font-size: 10px;
+}
+
+.tag.future{
+  background-color: #2379FB
+}
+
+.tag.present{
+  background-color: #fdc921
+}
+
+.tag.past{
+  background-color: #ED2249
+
 .card-category {
   height: 400px;
   border-radius: 5px;

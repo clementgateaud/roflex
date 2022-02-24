@@ -22,10 +22,19 @@
                 <div class="card-offer-infos">
                   <div class="card-offer-infos-top">
                     <p class="card-offer-name"><%= rental.offer.name %></p>
-                    <p class="card-offer-description"><%= rental.offer.description.truncate(100) %></p>
+                    <p class="card-offer-description"><%= rental.offer.description.truncate(110) %></p>
                   </div>
                   <div class="card-offer-infos-bottom">
-                    <p class="card-offer-pricing"><%= '%.2f' % rental.total_amount %>€</p>
+                    <div class="d-flex align-items-end">
+                      <p class="card-offer-pricing"><%= '%.2f' % rental.total_amount %>€</p>
+                      <% if rental.start_time > Date.today %>
+                        <p class="tag future">To come</p>
+                      <% elsif rental.end_time < Date.today %>
+                        <p class="tag past">Over</p>
+                      <% else %>
+                        <p class="tag present">Ongoing</p>
+                      <% end %>
+                    </div>
                     <p class="card-offer-address">📍 <%= rental.offer.address %></p>
                   </div>
                   <% if rental.offer.user.photo.attached? %>
@@ -54,10 +63,19 @@
                 <div class="card-offer-infos">
                   <div class="card-offer-infos-top">
                     <p class="card-offer-name"><%= rental.offer.name %></p>
-                    <p class="card-offer-description"><%= rental.offer.description.truncate(100) %></p>
+                    <p class="card-offer-description"><%= rental.offer.description.truncate(110) %></p>
                   </div>
                   <div class="card-offer-infos-bottom">
-                    <p class="card-offer-pricing"><%= '%.2f' % rental.total_amount %>€</p>
+                    <div class="d-flex align-items-end">
+                      <p class="card-offer-pricing"><%= '%.2f' % rental.total_amount %>€</p>
+                      <% if rental.start_time > Date.today %>
+                        <p class="tag future">To come</p>
+                      <% elsif rental.end_time < Date.today %>
+                        <p class="tag past">Over</p>
+                      <% else %>
+                        <p class="tag present">Ongoing</p>
+                      <% end %>
+                    </div>
                     <p class="card-offer-address">📍 <%= rental.offer.address %></p>
                   </div>
                   <% if rental.offer.user.photo.attached? %>
@@ -86,7 +104,7 @@
                 <div class="card-offer-infos">
                   <div class="card-offer-infos-top">
                     <p class="card-offer-name"><%= offer.name %></p>
-                    <p class="card-offer-description"><%= offer.description.truncate(100) %></p>
+                    <p class="card-offer-description"><%= offer.description.truncate(110) %></p>
                   </div>
                   <div class="card-offer-infos-bottom">
                     <p class="card-offer-pricing"><%= '%.2f' % offer.price %>€/day</p>
