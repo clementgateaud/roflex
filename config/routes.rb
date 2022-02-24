@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'users/wishlist', to: 'users#wishlist'
-  resources :rentals, except: %i[new]
+  resources :rentals, except: %i[new edit]
   resources :offers
   devise_for :users
   get 'dashboard', to: 'pages#dashboard'
