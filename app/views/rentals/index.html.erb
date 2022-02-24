@@ -3,9 +3,9 @@
   <div class="row">
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <button class="nav-link active" id="nav-rentals-tab" data-bs-toggle="tab" data-bs-target="#nav-rentals" type="button" role="tab" aria-controls="nav-rentals" aria-selected="true">My location</button>
-        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">My shop</button>
-        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">My current rentals(owner)</button>
+        <button class="nav-link active" id="nav-rentals-tab" data-bs-toggle="tab" data-bs-target="#nav-rentals" type="button" role="tab" aria-controls="nav-rentals" aria-selected="true">rentals dont je suis locataire</button>
+        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">rentals dont je suis proprio</button>
+        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">offers dont je suis proprio</button>
       </div>
     </nav>
   <div class="tab-content mt-3" id="nav-tabContent">
@@ -26,8 +26,8 @@
                     <p><%= rental.offer.description %></p>
                   </div>
                   <h2 class="card-offer-pricing"><%= '%.2f' % rental.total_amount %>€</h2>
-                  <% if rental.offer.user.photo.attached? %>
-                    <%= cl_image_tag rental.offer.user.photo.key, class:"card-offer-user avatar-bordered" %>
+                  <% if current_user.photo.attached? %>
+                    <%= cl_image_tag current_user.photo.key, class:"card-offer-user avatar-bordered" %>
                   <% else %>
                     <img src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=" class="card-offer-user avatar-bordered" />
                   <% end %>
@@ -78,32 +78,7 @@
         </div>
       <% end %>
     </div>
-    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-       <% @rentals.select { |rental| rental.offer.user == current_user }.each do |ofer| %>
-            <div class="col-sm-6 col-md-6 mb-3">
-                <div class="card-offer">
-                  <% if ofer.offer.photo.attached? %>
-                    <%= cl_image_tag ofer.offer.photo.key %>
-                  <% else %>
-                    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-                  <% end %>
-                  <div class="card-offer-infos">
-                    <div>
-                      <h2><%= ofer.offer.name %></h2>
-                      <p><%= ofer.offer.description %></p>
-                      <p>📍 <strong><%= ofer.offer.address %></strong></p>
-                    </div>
-                    <h2 class="card-offer-pricing"><%= '%.2f' % ofer.offer.price %>€/day</h2>
-                    <% if ofer.offer.user.photo.attached? %>
-                      <%= cl_image_tag ofer.offer.user.photo.key, class:"card-offer-user avatar-bordered" %>
-                    <% else %>
-                      <img src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=" class="card-offer-user avatar-bordered" />
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-          <% end %>
-    </div>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
   </div>
 </div>
 <%# test %>
