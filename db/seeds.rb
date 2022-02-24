@@ -10,13 +10,51 @@ require "open-uri"
 require "nokogiri"
 require "geocoder"
 
-3.times do
-  user = User.create(username: Faker::Internet.username, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+
+p "Destroying all rentals..."
+Rental.destroy_all
+p "All rentals are deleted"
+
+p "Destroying all offers..."
+Offer.destroy_all
+p "All offers are deleted"
+
+p "Destroying all users..."
+User.destroy_all
+p "All users are deleted"
+
+p "Creating users..."
+user1 = User.create(username: Faker::Internet.username, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
   email: Faker::Internet.email, phone_number: Faker::PhoneNumber.phone_number,
   password:'adminadmin')
-  file = URI.open(Faker::Avatar.image)
-  user.photo.attach(io: file, filename: 'a.png', content_type: 'image/png')
-end
+file1 = URI.open("https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWFufGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=800&q=60")
+user1.photo.attach(io: file1, filename: 'a.png', content_type: 'image/png')
+
+user2 = User.create(username: Faker::Internet.username, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+  email: Faker::Internet.email, phone_number: Faker::PhoneNumber.phone_number,
+  password:'adminadmin')
+file2 = URI.open("https://images.unsplash.com/photo-1618077360395-f3068be8e001?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bWFufGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=800&q=60")
+user2.photo.attach(io: file2, filename: 'a.png', content_type: 'image/png')
+
+user3 = User.create(username: Faker::Internet.username, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+  email: Faker::Internet.email, phone_number: Faker::PhoneNumber.phone_number,
+  password:'adminadmin')
+file3 = URI.open("https://images.unsplash.com/photo-1518577915332-c2a19f149a75?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGJ1c2luZXNzJTIwd29tYW58ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60")
+user3.photo.attach(io: file3, filename: 'a.png', content_type: 'image/png')
+
+user4 = User.create(username: Faker::Internet.username, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+  email: Faker::Internet.email, phone_number: Faker::PhoneNumber.phone_number,
+  password:'adminadmin')
+file4 = URI.open("https://images.unsplash.com/photo-1567336273898-ebbf9eb3c3bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHdvbWFufGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=800&q=60")
+user4.photo.attach(io: file4, filename: 'a.png', content_type: 'image/png')
+
+user5 = User.create(username: Faker::Internet.username, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+  email: Faker::Internet.email, phone_number: Faker::PhoneNumber.phone_number,
+  password:'adminadmin')
+file5 = URI.open("https://images.unsplash.com/photo-1634727898501-a76b30bc2c9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGJsYWNrJTIwbWFufGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=800&q=60")
+user5.photo.attach(io: file5, filename: 'a.png', content_type: 'image/png')
+
+p "#{User.count} users are created"
 
 # html = URI.open("https://www.etsy.com/search?q=rolex").read
 # doc = Nokogiri::HTML(html, nil, "utf-8")
@@ -31,9 +69,7 @@ end
 #   offer.photo.attach(io: file, filename: 'a.png', content_type: 'image/png')
 # end
 
-p "Destroy all offers"
-Offer.destroy_all
-p "All offers are deleted"
+p "Creating offers..."
 
 address1 = "Antibes"
 offer1 = Offer.create!(name: "Submariner", price: "499€", user: User.all.sample, description: "L’Oyster Perpetual Submariner en Acier Oystersteel est dotée d’un disque de lunette Cerachrom en céramique noire et d’un cadran noir, ainsi que de grands index luminescents.", address: address1, latitude: Geocoder.coordinates(address1)[0], longitude: Geocoder.coordinates(address1)[1])
@@ -82,3 +118,13 @@ p "#{Offer.count} offers are created"
 #   end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now), total_amount: rand(0.0..100.0).round(1),
 #   user: User.all.sample, offer: Offer.all.sample)
 # end
+
+p "Creating admin"
+
+admin = User.create(username: "jeanmicheladmin", first_name: "Jean-Michel", last_name: "Admin",
+  email: "admin@gmail.com", phone_number: "0600000000",
+  password:'adminadmin')
+fileadmin = URI.open("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShN0nuLT7HIpIANuDi6wbMKpeuCgZsl2PtAA&usqp=CAU")
+admin.photo.attach(io: fileadmin, filename: 'a.png', content_type: 'image/png')
+
+p "Admin created"
