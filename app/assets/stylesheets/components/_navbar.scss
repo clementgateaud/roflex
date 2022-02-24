@@ -1,3 +1,5 @@
+@import "colors";
+
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
@@ -18,11 +20,11 @@
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: #051367;
+  color: $primarycolor;
 }
 
 .dropdown-item {
-  color: #051367;
+  color: $primarycolor;
 }
 
 .navbar a {

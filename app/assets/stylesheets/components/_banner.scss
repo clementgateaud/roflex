@@ -1,7 +1,9 @@
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 250px 0;
+  height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
 }
 
 .banner h1 {
@@ -10,13 +12,12 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 40px;
   font-weight: 400;
-  font-family: 'Roboto', sans-serif;
 }
 
 .banner p {
   font-size: 20px;
   color: white;
-  opacity: .7;
+  opacity: 0.9;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
@@ -33,12 +34,11 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 40px;
   font-weight: 400;
-  font-family: 'Roboto', sans-serif;
 }
 
 .banner-child p {
   font-size: 20px;
   color: white;
-  opacity: .7;
+  opacity: .9;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }

@@ -1,7 +1,9 @@
+@import "colors";
+
 .footer {
   display: flex;
   flex-shrink: 0;
-  background-color: #051367;
+  background-color: $primarycolor;
   align-items: center;
   justify-content: space-between;
   padding: 20px 40px;

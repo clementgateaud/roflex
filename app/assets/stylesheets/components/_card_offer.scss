@@ -1,3 +1,5 @@
+@import "colors";
+
 .card-offer {
   overflow: hidden;
   background: white;
@@ -11,25 +13,37 @@
   object-fit: cover;
 }
 
-.card-offer h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
 .card-offer p {
   font-size: 12px;
-  opacity: .7;
   margin: 0;
 }
 
+.card-offer .card-offer-name {
+  font-size: 16px;
+  font-weight: bold;
+  color : $primarycolor;
+}
+
+.card-offer .card-offer-pricing {
+  font-weight: bold;
+  font-size: 16px;
+  color: #222222;
+}
+
+.card-offer .card-offer-address {
+  color: $primarycolor;
+}
 
 .card-offer .card-offer-infos {
   padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
   position: relative;
+}
+
+.card-offer .card-offer-infos-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
 .card-offer-infos .card-offer-user {

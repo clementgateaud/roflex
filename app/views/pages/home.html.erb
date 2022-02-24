@@ -1,17 +1,17 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.vintagewinders.co.uk/wp-content/uploads/2017/04/vintage-winders-rolex-banner.jpg);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(https://www.vintagewinders.co.uk/wp-content/uploads/2017/04/vintage-winders-rolex-banner.jpg);">
   <div class="container">
-    <h1>Rent beautiful watches and jewelry</h1>
+    <h1>Rent beautiful watches</h1>
     <p>The luxury you've always deserved.</p>
     <div class= "search-home"><%= render 'shared/searchbar' %></div>
   </div>
 </div>
 
 <div class="mt-5 container">
-  <h2 class = "mb-5 text-center title">Roflex selection for today</h2>
+  <h2 class = "mb-5">Roflex selection for today</h2>
 
    <div class="row">
     <% @offers.first(3).each do |offer| %>
-        <div class="col-sm-6 col-md-4 mb-5">
+        <div class="col-sm-6 col-md-4 mb-3">
           <%= link_to offer, class:"card-offer-link" do %>
             <div class="card-offer">
               <% if offer.photo.attached? %>
@@ -20,11 +20,14 @@
                 <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
               <% end %>
               <div class="card-offer-infos">
-                <div>
-                  <h2><%= offer.name %></h2>
-                  <p><%= offer.description %></p>
+                <div class="card-offer-infos-top">
+                  <p class="card-offer-name"><%= offer.name %></p>
+                  <p class="card-offer-description"><%= offer.description %></p>
                 </div>
-                <h2 class="card-offer-pricing"><%= offer.price %>€</h2>
+                <div class="card-offer-infos-bottom">
+                  <p class="card-offer-pricing"><%= '%.2f' % offer.price %>€/day</p>
+                  <p class="card-offer-address">📍 <%= offer.address %></p>
+                </div>
                 <% if offer.user.photo.attached? %>
                   <%= cl_image_tag offer.user.photo.key, class:"card-offer-user avatar-bordered" %>
                 <% else %>
@@ -37,7 +40,7 @@
       <% end %>
   </div>
   <div class="text-center">
-    <%= link_to("See more", offers_path, class:"btn btn-primary") %>
+    <%= link_to("See more", offers_path, class:"btn") %>
   </div>
 
 </div>
@@ -46,7 +49,7 @@
   <div class="container">
     <h2>Your rolex is sleeping in a drawer ?</h2>
     <p>You can make money out of it.</p>
-      <%= link_to("Rent it out", new_offer_path, class:"btn btn-primary") %>
+      <%= link_to("Rent it out", new_offer_path, class:"btn") %>
     </div>
   </div>
 </div>

@@ -5,17 +5,17 @@
     </div>
     <div class="col-sm-6">
     <div class="info-container">
-      <h1 class="title"><%= @offer.name %></h1>
+      <h1><%= @offer.name %></h1>
       <p><%= @offer.description %></p>
-      <p>Price per day: <strong><span id="priceperday"><%= '%.2f' % @offer.price %></span> €</strong></p>
+      <p><i class="fas fa-tag"></i> <strong><span id="priceperday"><%= '%.2f' % @offer.price %></span>€</strong>/day</p>
     </div>
     <div class="action-container" data-controller="dynamicprice">
       <%= simple_form_for @rental do |f| %>
         <%= f.input :start_time, as: :date, html5: true,label: "Start date", input_html:{value: Date.today, data:{action:"change->dynamicprice#updatePrice"}} %>
         <%= f.input :end_time, as: :date, html5: true, label: "End date", input_html:{value: Date.today, data:{action:"change->dynamicprice#updatePrice"}} %>
         <%= hidden_field_tag :offer_id, @offer.id %>
-        <p>Total price: <span data-dynamicprice-target="price" id="realprice"><%= @offer.price %> €</span></p>
-        <%= f.submit "Rent it", class:"btn btn-primary", id:"rent-btn" %>
+        <p><i class="fas fa-shopping-cart"></i> <strong><span data-dynamicprice-target="price" id="realprice"><%= @offer.price %> €</span></strong></p>
+        <%= f.submit "Rent it", class:"btn", id:"rent-btn" %>
       <% end %>
     </div>
     </div>

@@ -15,12 +15,10 @@
 @import "pages/index";
 
 // CSS Fonts
-h1, h2, h3, h4 {
-  font-family: 'Roboto', sans-serif;
-}
+h1, h2 {
+  font-family: 'DM Serif Display', serif;
+  color: $primarycolor;
 
-p, a {
-  font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -28,6 +26,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
+  font-family: 'Roboto', sans-serif;
 }
 
 .wrapper {
