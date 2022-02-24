@@ -10,9 +10,6 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <%= link_to "Home", root_path, class: "nav-link"%>
-          </li>
-          <li class="nav-item">
             <%= link_to "Products", offers_path, class: "nav-link"%>
           </li>
           <li class="nav-item">
@@ -27,7 +24,6 @@
               <% end %>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                   <%= link_to "Profile",dashboard_path,class: "text-decoration-none dropdown-item" %>
-                  <%= link_to "Wishlist",users_wishlist_path(current_user),class: "text-decoration-none dropdown-item" %>
                   <%= link_to "Edit Profile",edit_user_registration_path(current_user),class: "text-decoration-none dropdown-item" %>
                   <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
               </div>
