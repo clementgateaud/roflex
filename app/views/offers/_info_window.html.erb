@@ -1,2 +1,7 @@
-<h2><%= offer.name %></h2>
-<p><%= offer.address %></p>
+<div class="window">
+  <%= link_to offer, class:"card-offer" do %>
+  <%= cl_image_tag offer.photo.key %>
+  <h5 class="mt-2"><%= offer.name %></h5>
+  <p>📍 <%= offer.address %></p>
+  <% end %>
+</div>
