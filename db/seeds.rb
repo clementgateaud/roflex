@@ -119,7 +119,7 @@ p "#{Offer.count} offers are created"
 #   user: User.all.sample, offer: Offer.all.sample)
 # end
 
-p "Creating admin"
+p "Creating admin..."
 
 admin = User.create(username: "jeanmicheladmin", first_name: "Jean-Michel", last_name: "Admin",
   email: "admin@gmail.com", phone_number: "0600000000",

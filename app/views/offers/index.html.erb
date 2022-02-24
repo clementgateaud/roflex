@@ -3,34 +3,34 @@
     <div class="col-md-8">
       <%= render 'shared/searchbar' %>
       <div class="row">
-          <% @offers.each do |offer| %>
-              <div class="col-sm-6 col-md-6 mb-3">
-                <%= link_to offer, class:"card-offer-link" do %>
-                  <div class="card-offer">
-                    <% if offer.photo.attached? %>
-                      <%= cl_image_tag offer.photo.key %>
-                    <% else %>
-                      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-                    <% end %>
-                    <div class="card-offer-infos">
-                      <div class="card-offer-infos-top">
-                        <p class="card-offer-name"><%= offer.name %></p>
-                        <p class="card-offer-description"><%= offer.description.truncate(135) %></p>
-                      </div>
-                      <div class="card-offer-infos-bottom">
-                        <p class="card-offer-pricing"><%= '%.2f' % offer.price %>€/day</p>
-                        <p class="card-offer-address">📍 <%= offer.address %></p>
-                      </div>
-                      <% if offer.user.photo.attached? %>
-                        <%= cl_image_tag offer.user.photo.key, class:"card-offer-user avatar-bordered" %>
-                      <% else %>
-                        <img src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=" class="card-offer-user avatar-bordered" />
-                      <% end %>
-                    </div>
-                  </div>
+        <% @offers.each do |offer| %>
+          <div class="col-sm-6 col-md-6 mb-3">
+            <%= link_to offer, class:"card-offer-link" do %>
+              <div class="card-offer">
+                <% if offer.photo.attached? %>
+                  <%= cl_image_tag offer.photo.key %>
+                <% else %>
+                  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
                 <% end %>
+                <div class="card-offer-infos">
+                  <div class="card-offer-infos-top">
+                    <p class="card-offer-name"><%= offer.name %></p>
+                    <p class="card-offer-description"><%= offer.description.truncate(135) %></p>
+                  </div>
+                  <div class="card-offer-infos-bottom">
+                    <p class="card-offer-pricing"><%= '%.2f' % offer.price %>€/day</p>
+                    <p class="card-offer-address">📍 <%= offer.address %></p>
+                  </div>
+                  <% if offer.user.photo.attached? %>
+                    <%= cl_image_tag offer.user.photo.key, class:"card-offer-user avatar-bordered" %>
+                  <% else %>
+                    <img src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=" class="card-offer-user avatar-bordered" />
+                  <% end %>
+                </div>
               </div>
-          <% end %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class="col-md-4 map"

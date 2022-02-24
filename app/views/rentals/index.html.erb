@@ -1,16 +1,15 @@
-<div class="container text-center my-4">
-  <h1>Upcoming rentals</h1>
-  <div class="row">
-    <nav>
-      <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <button class="nav-link active" id="nav-rentals-tab" data-bs-toggle="tab" data-bs-target="#nav-rentals" type="button" role="tab" aria-controls="nav-rentals" aria-selected="true">My location</button>
-        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">My shop</button>
-        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">My current rentals(owner)</button>
-      </div>
-    </nav>
+<div class="container my-4">
+  <h1>My rentals</h1>
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="nav-link active" id="nav-rentals-tab" data-bs-toggle="tab" data-bs-target="#nav-rentals" type="button" role="tab" aria-controls="nav-rentals" aria-selected="true">My rentals (as renter)</button>
+      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">My rentals(as owner)</button>
+      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">My offers (as owner)</button>
+    </div>
+  </nav>
   <div class="tab-content mt-3" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-rentals" role="tabpanel" aria-labelledby="nav-rentals-tab">
-      <div class="container">
+      <div class="row">
         <% current_user.rentals.each do |rental| %>
           <div class="col-sm-6 col-md-4 mb-3">
             <%= link_to rental, class:"card-offer-link" do %>
@@ -21,11 +20,14 @@
                   <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
                 <% end %>
                 <div class="card-offer-infos">
-                  <div>
-                    <h2><%= rental.offer.name %></h2>
-                    <p><%= rental.offer.description %></p>
+                  <div class="card-offer-infos-top">
+                    <p class="card-offer-name"><%= rental.offer.name %></p>
+                    <p class="card-offer-description"><%= rental.offer.description.truncate(100) %></p>
                   </div>
-                  <h2 class="card-offer-pricing"><%= '%.2f' % rental.total_amount %>€</h2>
+                  <div class="card-offer-infos-bottom">
+                    <p class="card-offer-pricing"><%= '%.2f' % rental.total_amount %>€</p>
+                    <p class="card-offer-address">📍 <%= rental.offer.address %></p>
+                  </div>
                   <% if rental.offer.user.photo.attached? %>
                     <%= cl_image_tag rental.offer.user.photo.key, class:"card-offer-user avatar-bordered" %>
                   <% else %>
@@ -34,76 +36,73 @@
                 </div>
               </div>
             <% end %>
-            <div class="mb-3 d-flex justify-content-end">
-              <div class = "card-offer-edit">
-                <div class = "ml-2">
-                  <%= link_to edit_rental_path(rental) do %>
-                    <i class="fas fa-pen"></i>
-                  <% end %>
-                  <%= link_to rental_path(rental), method: :delete, data: { confirm: "Are you sure ?"} do%>
-                    <i class="fas fa-trash-alt"></i>
-
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+      <div class="row">
+        <% @rentals.select { |rental| rental.offer.user == current_user }.each do |rental| %>
+          <div class="col-sm-6 col-md-4 mb-3">
+            <%= link_to rental, class:"card-offer-link" do %>
+              <div class="card-offer">
+                <% if rental.offer.photo.attached? %>
+                  <%= cl_image_tag rental.offer.photo.key %>
+                <% else %>
+                  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+                <% end %>
+                <div class="card-offer-infos">
+                  <div class="card-offer-infos-top">
+                    <p class="card-offer-name"><%= rental.offer.name %></p>
+                    <p class="card-offer-description"><%= rental.offer.description.truncate(100) %></p>
+                  </div>
+                  <div class="card-offer-infos-bottom">
+                    <p class="card-offer-pricing"><%= '%.2f' % rental.total_amount %>€</p>
+                    <p class="card-offer-address">📍 <%= rental.offer.address %></p>
+                  </div>
+                  <% if rental.offer.user.photo.attached? %>
+                    <%= cl_image_tag rental.offer.user.photo.key, class:"card-offer-user avatar-bordered" %>
+                  <% else %>
+                    <img src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=" class="card-offer-user avatar-bordered" />
                   <% end %>
                 </div>
               </div>
-            </div>
+            <% end %>
           </div>
         <% end %>
       </div>
     </div>
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-
-      <% current_user.offers.each do |offer| %>
-        <div class="col-sm-6 col-md-6 mb-3">
-          <div class="card-offer">
-            <% if offer.photo.attached? %>
-              <%= cl_image_tag offer.photo.key %>
-            <% else %>
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-            <% end %>
-            <div class="card-offer-infos">
-              <div>
-                <h2><%= offer.name %></h2>
-                <p><%= offer.description %></p>
-                <p>📍 <strong><%= offer.address %></strong></p>
-              </div>
-              <h2 class="card-offer-pricing"><%= '%.2f' % offer.price %>€/day</h2>
-              <% if offer.user.photo.attached? %>
-                <%= cl_image_tag offer.user.photo.key, class:"card-offer-user avatar-bordered" %>
-              <% else %>
-                <img src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=" class="card-offer-user avatar-bordered" />
-              <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-       <% @rentals.select { |rental| rental.offer.user == current_user }.each do |ofer| %>
-            <div class="col-sm-6 col-md-6 mb-3">
-                <div class="card-offer">
-                  <% if ofer.offer.photo.attached? %>
-                    <%= cl_image_tag ofer.offer.photo.key %>
-                  <% else %>
-                    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-                  <% end %>
-                  <div class="card-offer-infos">
-                    <div>
-                      <h2><%= ofer.offer.name %></h2>
-                      <p><%= ofer.offer.description %></p>
-                      <p>📍 <strong><%= ofer.offer.address %></strong></p>
-                    </div>
-                    <h2 class="card-offer-pricing"><%= '%.2f' % ofer.offer.price %>€/day</h2>
-                    <% if ofer.offer.user.photo.attached? %>
-                      <%= cl_image_tag ofer.offer.user.photo.key, class:"card-offer-user avatar-bordered" %>
-                    <% else %>
-                      <img src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=" class="card-offer-user avatar-bordered" />
-                    <% end %>
+      <div class="row">
+        <% current_user.offers.each do |offer| %>
+          <div class="col-sm-6 col-md-4 mb-3">
+            <%= link_to offer, class:"card-offer-link" do %>
+              <div class="card-offer">
+                <% if offer.photo.attached? %>
+                  <%= cl_image_tag offer.photo.key %>
+                <% else %>
+                  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+                <% end %>
+                <div class="card-offer-infos">
+                  <div class="card-offer-infos-top">
+                    <p class="card-offer-name"><%= offer.name %></p>
+                    <p class="card-offer-description"><%= offer.description.truncate(100) %></p>
                   </div>
+                  <div class="card-offer-infos-bottom">
+                    <p class="card-offer-pricing"><%= '%.2f' % offer.price %>€/day</p>
+                    <p class="card-offer-address">📍 <%= offer.address %></p>
+                  </div>
+                  <% if offer.user.photo.attached? %>
+                    <%= cl_image_tag offer.user.photo.key, class:"card-offer-user avatar-bordered" %>
+                  <% else %>
+                    <img src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=" class="card-offer-user avatar-bordered" />
+                  <% end %>
                 </div>
               </div>
-          <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-<%# test %>
