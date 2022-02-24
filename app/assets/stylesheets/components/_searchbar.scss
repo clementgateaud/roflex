@@ -1,35 +1,41 @@
+@import "colors";
+
 .search-form-control {
-  position: relative;
+  display: flex;
 }
 
 .search-form-control .btn {
-  position: absolute;
-  top: 8px;
-  bottom: 8px;
-  right: 8px;
-  padding: 10px 24px 10px;
+  height: 50px;
+  border-radius: 0px 5px 5px 0px;
+  border: solid 1px $primarycolor;
 }
 
 .search-form-control .form-control {
-  height: 3.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  border: 1px solid #E7E7E7;
+  height: 50px;
+  border-radius: 5px 0px 0px 5px;
+  border: solid 1px $primarycolor;
 }
 
 .search-form-control .form-control:focus {
-  border: 1px solid #051467;
   outline: none !important;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: none;
+}
+
+
+.search-home {
+  margin-top: 20px;
 }
 
 .search-home .form-control {
-  width: 50%;
+  width: 30%;
+  min-width: 200px;
+  border: none;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 8px 24px;
 }
 
 .search-home .search-form-control .btn {
-  position: relative;
-  margin-left: 5px;
-  margin-top: 5px;
+  border: none;
+  box-shadow: rgba(255, 255, 255, 0.4) 0px 8px 24px;
 }
 
 .form {
