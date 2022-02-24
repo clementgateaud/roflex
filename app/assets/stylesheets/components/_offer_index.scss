@@ -1,0 +1,9 @@
+.w-100-custom {
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .w-100-custom {
+    --bs-gutter-x: 0px;
+  }
+}
