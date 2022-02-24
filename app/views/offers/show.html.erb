@@ -20,7 +20,7 @@
           <%= f.input :start_time, as: :date, html5: true,label: "Start date", input_html:{value: Date.today, data:{action:"change->dynamicprice#updatePrice"}} %>
           <%= f.input :end_time, as: :date, html5: true, label: "End date", input_html:{value: Date.today, data:{action:"change->dynamicprice#updatePrice"}} %>
           <%= hidden_field_tag :offer_id, @offer.id %>
-          <p class="blue"><i class="fas fa-shopping-cart"></i> <strong><span data-dynamicprice-target="price" id="realprice"><%= @offer.price %> €</span></strong></p>
+          <p class="blue"><i class="fas fa-shopping-cart"></i> <strong><span data-dynamicprice-target="price" id="realprice"><%= '%.2f' % @offer.price %> €</span></strong></p>
           <%= f.submit "Rent it", class:"btn", id:"rent-btn" %>
         <% end %>
       </div>
