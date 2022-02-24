@@ -2,6 +2,6 @@
   <%= simple_form_for :search, url: offers_path, method: :get do %>
     <div class="search-form-control form-group mb-3">
       <%= text_field_tag :query, params[:query], class: "form-control string required", placeholder: "Find a watch" %>
-      <%= submit_tag "Search", type: "submit", name: "button", class: "btn btn-primary" %>
+      <%= submit_tag "Search", type: "submit", name: "button", class: "btn" %>
     </div>
   <% end %>
