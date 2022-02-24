@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :rentals
   has_many :offers
-  has_many :offers, through: :rentals
   has_one_attached :photo
   # validates :username, presence: true
   # validates :email, presence: true
