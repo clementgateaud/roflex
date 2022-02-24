@@ -72,43 +72,43 @@ p "#{User.count} users are created"
 p "Creating offers..."
 
 address1 = "Antibes"
-offer1 = Offer.create!(name: "Submariner", price: "499€", user: User.all.sample, description: "L’Oyster Perpetual Submariner en Acier Oystersteel est dotée d’un disque de lunette Cerachrom en céramique noire et d’un cadran noir, ainsi que de grands index luminescents.", address: address1, latitude: Geocoder.coordinates(address1)[0], longitude: Geocoder.coordinates(address1)[1])
+offer1 = Offer.create!(name: "Rolex Submariner", price: "499€", user: User.all.sample, description: "The Oyster Perpetual Submariner in Oystersteel with a Cerachrom bezel insert in black ceramic and a black dial with large luminescent hour markers.", address: address1, latitude: Geocoder.coordinates(address1)[0], longitude: Geocoder.coordinates(address1)[1])
 offer1.photo.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/cellini/m50535-0002_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
 
 address2 = "Paris"
-offer2 = Offer.create!(name: "Explorer", price: "357€", user: User.all.sample, description: "Les reflets de lumière sur les flancs de carrure mettent en valeur les formes raffinées de son boîtier Oyster, réalisé en acier Oystersteel, de respectivement 41 mm ou 36 mm de diamètre et surmonté d’une lunette bombée.", address: address2, latitude: Geocoder.coordinates(address2)[0], longitude: Geocoder.coordinates(address2)[1])
+offer2 = Offer.create!(name: "Rolex Explorer", price: "357€", user: User.all.sample, description: "The Oyster Perpetual Explorer in Oystersteel and yellow gold features a distinctive black dial with characteristic 3, 6, and 9 numerals with a Chromalight display.", address: address2, latitude: Geocoder.coordinates(address2)[0], longitude: Geocoder.coordinates(address2)[1])
 offer2.photo.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/milgauss/m116400gv-0002_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
 
 address3 = "Marseille"
-offer3 = Offer.create!(name: "Cosmograph Daytona", price: "456€", user: User.all.sample, description: "L’Oyster Perpetual Cosmograph Daytona est la montre-outil de référence des passionnés d’automobile et de vitesse.", address: address3, latitude: Geocoder.coordinates(address3)[0], longitude: Geocoder.coordinates(address3)[1])
+offer3 = Offer.create!(name: "Rolex Cosmograph Daytona", price: "456€", user: User.all.sample, description: "This Oyster Perpetual Cosmograph Daytona in 18 ct Everose gold, with a meteorite and black dial and an Oyster bracelet, features an 18 ct Everose gold bezel with engraved tachymetric scale.", address: address3, latitude: Geocoder.coordinates(address3)[0], longitude: Geocoder.coordinates(address3)[1])
 offer3.photo.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/sky-dweller/m326238-0009_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
 
 address4 = "Dijon"
-offer4 = Offer.create!(name: "Sky-dweller", price: "235€", user: User.all.sample, description: "Première montre de la catégorie Classique munie de cet innovant bracelet en élastomère haute performance, cette déclinaison s’habille d’un cadran noir vif finition soleil avec aiguilles et index en or jaune 18 ct.", address: address4, latitude: Geocoder.coordinates(address4)[0], longitude: Geocoder.coordinates(address4)[1])
+offer4 = Offer.create!(name: "Rolex Sky-dweller", price: "235€", user: User.all.sample, description: "The Oyster Perpetual Sky-Dweller in 18 ct Everose gold with an intense white dial and an Oyster bracelet. This distinctive watch is characterized by its second time zone display on an off-centre disc on the dial.", address: address4, latitude: Geocoder.coordinates(address4)[0], longitude: Geocoder.coordinates(address4)[1])
 offer4.photo.attach(io: URI.open('https://content.rolex.com//dam/new-watches-2021/media/wallpapers/explorer/m124273-0001_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
 
 address5 = "Rouen"
-offer5 = Offer.create!(name: "Explorer", price: "673€", user: User.all.sample, description: "Des explorateurs, alpinistes et scientifiques parmi les plus intrépides ont éprouvé la fiabilité des montres Explorer et Explorer II dans des endroits aux conditions les plus extrêmes.", address: address5, latitude: Geocoder.coordinates(address5)[0], longitude: Geocoder.coordinates(address5)[1])
+offer5 = Offer.create!(name: "Rolex Explorer II", price: "673€", user: User.all.sample, description: "This Oyster Perpetual Explorer II in Oystersteel with an Oyster bracelet features a white dial with an arrow-shaped 24-hour hand and hour markers with a Chromalight display.", address: address5, latitude: Geocoder.coordinates(address5)[0], longitude: Geocoder.coordinates(address5)[1])
 offer5.photo.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/sea-dweller/m126603-0001_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
 
 address6 = "Lille"
-offer6 = Offer.create!(name: "GMT-Master II", price: "428€", user: User.all.sample, description: "Conçue pour afficher simultanément l’heure de deux fuseaux horaires, la GMT‑Master, qui a vu le jour en 1955, a été développée comme un instrument d’aide à la navigation pour les professionnels appelés à sillonner le monde.", address: address6 ,latitude: Geocoder.coordinates(address6)[0], longitude: Geocoder.coordinates(address6)[1])
+offer6 = Offer.create!(name: "Rolex Cellini", price: "428€", user: User.all.sample, description: "The Cellini collection celebrates the eternal elegance of traditional timepieces with a contemporary touch; the name was inspired by the Italian Renaissance artist, Benvenuto Cellini.", address: address6 ,latitude: Geocoder.coordinates(address6)[0], longitude: Geocoder.coordinates(address6)[1])
 offer6.photo.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/lady-datejust/m279138rbr-0015_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
 
 address7 = "Toulouse"
-offer7 = Offer.create!(name: "Yacht Master", price: "300€", user: User.all.sample, description: "Témoin des liens privilégiés qui unissent Rolex et le monde de la voile depuis les années 1950, la Yacht‑Master conjugue avec brio fonctionnalité et style nautique, tandis que la Yacht‑Master II propose un concentré de technologie Rolex à l’avant‑garde de l’art horloger dans un chronographe de régate conçu pour la voile de compétition.", address: address7, latitude: Geocoder.coordinates(address7)[0], longitude: Geocoder.coordinates(address7)[1])
+offer7 = Offer.create!(name: "Rolex Yacht Master II", price: "300€", user: User.all.sample, description: "The Oyster Perpetual Yacht-Master II in Oystersteel and Everose gold with an Oyster bracelet and a bidirectional rotatable bezel with a blue Cerachrom insert.", address: address7, latitude: Geocoder.coordinates(address7)[0], longitude: Geocoder.coordinates(address7)[1])
 offer7.photo.attach(io: URI.open('https://content.rolex.com//dam/new-watches-2021/media/wallpapers/cosmograph-daytona/m116519ln-0038_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
 
 address8 = "Lyon"
-offer8 = Offer.create!(name: "Day date", price: "279€", user: User.all.sample, description: "À sa création en 1956, la Day-Date est la première montre-bracelet chronomètre, étanche et automatique à offrir un calendrier moderne affichant instantanément le jour en toutes lettres et la date dans des guichets sur le cadran.", address: address8,latitude: Geocoder.coordinates(address8)[0], longitude: Geocoder.coordinates(address8)[1])
+offer8 = Offer.create!(name: "Rolex Day date", price: "279€", user: User.all.sample, description: "Launched in 1956, the Day-Date made its debut as the first waterproof and self-winding chronometer wristwatch to offer a modern calendar with an instantaneous day display, spelt out in full in a window on the dial, in addition to the date.", address: address8,latitude: Geocoder.coordinates(address8)[0], longitude: Geocoder.coordinates(address8)[1])
 offer8.photo.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/air-king/m116900-0001_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
 
 address9 = "Deauville"
-offer9 = Offer.create!(name: "Milgauss", price: "970€", user: User.all.sample, description: "Première montre de ce type, elle se démarque par son esthétique unique et par son héritage scientifique. ", address: address9 ,latitude: Geocoder.coordinates(address9)[0], longitude: Geocoder.coordinates(address9)[1])
+offer9 = Offer.create!(name: "Rolex Milgauss", price: "970€", user: User.all.sample, description: "This Oyster Perpetual Milgauss features a Z-blue dial with luminescent hour markers, a green sapphire crystal produces light reflections while preserving optimal legibility.", address: address9 ,latitude: Geocoder.coordinates(address9)[0], longitude: Geocoder.coordinates(address9)[1])
 offer9.photo.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/oyster-perpetual/m124300-0001_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
 
 address10 = "Bordeaux"
-offer10 = Offer.create!(name: "Air-king", price: "147€", user: User.all.sample, description: "La Rolex Air-King rend hommage aux pionniers de l’aviation et au rôle des montres Oyster dans l’épopée aérienne.", address: address10, latitude: Geocoder.coordinates(address10)[0], longitude: Geocoder.coordinates(address10)[1])
+offer10 = Offer.create!(name: "Rolex Air-king", price: "147€", user: User.all.sample, description: "With its 40 mm case in Oystersteel, solid-link Oyster bracelet with Oysterclasp, and distinctive Black dial, the Air-King perpetuates the aeronautical heritage of the original Rolex Oyster.", address: address10, latitude: Geocoder.coordinates(address10)[0], longitude: Geocoder.coordinates(address10)[1])
 offer10.photo.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/submariner/m124060-0001_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
 
 p "#{Offer.count} offers are created"
