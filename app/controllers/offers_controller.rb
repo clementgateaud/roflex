@@ -54,6 +54,7 @@ class OffersController < ApplicationController
 
   def destroy
     authorize @offer
+    @offer.rentals.each(&:destroy)
     @offer.destroy
     redirect_to offers_path
   end
