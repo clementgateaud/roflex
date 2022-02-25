@@ -3,7 +3,7 @@ class Offer < ApplicationRecord
   has_many :rentals
   has_many :users, through: :rentals
   has_many :reviews, dependent: :destroy
-  #has_many_attached :photos
+  has_many_attached :photos
   validates :name, presence: true
   validates :price, presence: true
   has_one_attached :photo
