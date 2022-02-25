@@ -33,7 +33,7 @@ class RentalsController < ApplicationController
     @rental.update(rental_params)
     nb_days = (@rental.end_time - @rental.start_time).to_i + 1
     @rental.update(total_amount: (nb_days * @rental.offer.price).round(2))
-    redirect_to rental_path(@rental)
+    redirect_to rentals_path
   end
 
   def destroy
