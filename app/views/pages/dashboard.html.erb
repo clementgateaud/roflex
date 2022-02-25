@@ -15,6 +15,19 @@
           <li> <i class="fas fa-phone"></i> <%= current_user.phone_number %></li>
         </ul>
       </div>
+
+      <div class="mb-5">
+          <% if current_user.rentals.blank? %>
+           <h5> Let's start and rent a Rolex to flex </h5>
+           <%= link_to "Offers", offers_path, class:"btn" %>
+          <% else %>
+            <h5> You rented
+              <%= pluralize current_user.rentals.size, "Rolex" %> !
+              Thank you !
+            </h5>
+          <% end %>
+        </div>
+
       <div class="">
         <%= link_to "Edit your profile", edit_user_registration_path, class:"btn" %>
         <%= link_to "Back to home", root_path, class:"btn" %>
