@@ -45,21 +45,57 @@
     </div>
   </div>
 
-<div class="container mb-5 mt-3">
-  <% if @offer.reviews.count > 0 %>
-      <div class="row mb-3">
-        <h2>Last reviews</h2>
-        <p><%= pluralize((@offer.reviews.count),'review') %> </p>
-        <% @offer.reviews.each do |review| %>
-          <div class="card-review col-md-3 m-2 p-3">
-            <p class="blue"><%= "★" * review.rating %><%= "☆" * (5 - review.rating) %></p>
-            <p class="blue"><%= review.content %></p>
-          </div>
+  <div class="container mb-5 mt-3">
+    <h2>Last reviews</h2>
+      <p><%= pluralize((@offer.reviews.count),'review') %> </p>
+        <% if @offer.reviews.count > 0 %>
+            <div class="row mb-3">
+              <% @offer.reviews.each do |review| %>
+                <div class="card-review col-md-3 m-2 p-3">
+                  <p class="blue"><%= "★" * review.rating %><%= "☆" * (5 - review.rating) %></p>
+                  <p class="blue"><%= review.content %></p>
+                </div>
+              <% end %>
+            </div>
+            <%= link_to 'Leave a review', new_offer_review_path(@offer), class: "col-md-2 btn btn-primary" %>
+        <% else %>
+            <%= link_to 'Leave the first review for this product', new_offer_review_path(@offer) %>
         <% end %>
-      </div>
-      <%= link_to 'Leave a review', new_offer_review_path(@offer), class: "col-md-2 btn btn-primary" %>
-    <% else %>
-      <%= link_to 'Leave the first review for this product !', new_offer_review_path(@offer) %>
-  <% end %>
+  </div>
+
+  <div class="mt-5 mb-5 container">
+  <h2 class = "mb-5">You may also like</h2>
+
+   <div class="row">
+    <% Offer.all.last(3).each do |offer| %>
+        <div class="col-sm-6 col-md-4 mb-3">
+          <%= link_to offer, class:"card-offer-link" do %>
+            <div class="card-offer">
+              <% if offer.photos.attached? %>
+                <%= cl_image_tag offer.photos.first.key %>
+              <% else %>
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+              <% end %>
+              <div class="card-offer-infos">
+                <div class="card-offer-infos-top">
+                  <p class="card-offer-name"><%= offer.name %></p>
+                  <p class="card-offer-description"><%= offer.description.truncate(110) %></p>
+                </div>
+                <div class="card-offer-infos-bottom">
+                  <p class="card-offer-pricing"><%= '%.2f' % offer.price %>€/day</p>
+                  <p class="card-offer-address">📍 <%= offer.address %></p>
+                </div>
+                <% if offer.user.photo.attached? %>
+                  <%= cl_image_tag offer.user.photo.key, class:"card-offer-user avatar-bordered" %>
+                <% else %>
+                  <img src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=" class="card-offer-user avatar-bordered" />
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
+
 </div>
 </div>
