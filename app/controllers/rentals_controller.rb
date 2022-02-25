@@ -16,7 +16,7 @@ class RentalsController < ApplicationController
     nb_days = (@rental.end_time - @rental.start_time).to_i + 1
     @rental.total_amount = (nb_days * @rental.offer.price).round(2)
     if @rental.save!
-      redirect_to rental_path(@rental)
+      redirect_to rentals_path
     else
       render :new
     end
