@@ -77,32 +77,35 @@ p "Creating offers..."
 
 address1 = "Antibes"
 offer1 = Offer.new(name: "Rolex Submariner", price: "499€", user: User.all.sample, description: "The Oyster Perpetual Submariner in Oystersteel with a Cerachrom bezel insert in black ceramic and a black dial with large luminescent hour markers.", address: address1, latitude: Geocoder.coordinates(address1)[0], longitude: Geocoder.coordinates(address1)[1])
-offer1.photos.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/cellini/m50535-0002_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
+offer1.photos.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/submariner/m124060-0001_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
+offer1.photos.attach(io: URI.open('https://static.chrono24.com/cdn-cgi/image/f=auto,metadata=none,fit=cover,q=65,w=1190,h=595,dpr=2.0/magazine/wp-content/uploads/2021/11/Rolex-Submariner-2-1.jpg'), filename: 'a.png', content_type: 'image/png')
 offer1.save
 
 address2 = "Paris"
 offer2 = Offer.new(name: "Rolex Explorer", price: "357€", user: User.all.sample, description: "The Oyster Perpetual Explorer in Oystersteel and yellow gold features a distinctive black dial with characteristic 3, 6, and 9 numerals with a Chromalight display.", address: address2, latitude: Geocoder.coordinates(address2)[0], longitude: Geocoder.coordinates(address2)[1])
-offer2.photos.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/milgauss/m116400gv-0002_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
+offer2.photos.attach(io: URI.open('https://content.rolex.com//dam/new-watches-2021/media/wallpapers/explorer/m124273-0001_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
+offer2.photos.attach(io: URI.open('https://content.rolex.com/dam/new-watches-2021/family-pages/explorer/roller-design/family-page-explorer-rolesor_explorer_hero_v0f_portrait.jpg?imwidth=420'), filename: 'a.png', content_type: 'image/png')
+offer2.photos.attach(io: URI.open('https://content.rolex.com/dam/new-watches-2021/family-pages/explorer/videos/cover/family-page-explorer-cover-video-posterframe.jpg'), filename: 'a.png', content_type: 'image/png')
 offer2.save
 
 address3 = "Marseille"
 offer3 = Offer.new(name: "Rolex Cosmograph Daytona", price: "456€", user: User.all.sample, description: "This Oyster Perpetual Cosmograph Daytona in 18 ct Everose gold, with a meteorite and black dial and an Oyster bracelet, features an 18 ct Everose gold bezel with engraved tachymetric scale.", address: address3, latitude: Geocoder.coordinates(address3)[0], longitude: Geocoder.coordinates(address3)[1])
-offer3.photos.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/sky-dweller/m326238-0009_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
+offer3.photos.attach(io: URI.open('https://content.rolex.com//dam/new-watches-2021/media/wallpapers/cosmograph-daytona/m116519ln-0038_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
 offer3.save
 
 address4 = "Dijon"
 offer4 = Offer.new(name: "Rolex Sky-dweller", price: "235€", user: User.all.sample, description: "The Oyster Perpetual Sky-Dweller in 18 ct Everose gold with an intense white dial and an Oyster bracelet. This distinctive watch is characterized by its second time zone display on an off-centre disc on the dial.", address: address4, latitude: Geocoder.coordinates(address4)[0], longitude: Geocoder.coordinates(address4)[1])
-offer4.photos.attach(io: URI.open('https://content.rolex.com//dam/new-watches-2021/media/wallpapers/explorer/m124273-0001_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
+offer4.photos.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/sky-dweller/m326238-0009_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
 offer4.save
 
 address5 = "Rouen"
 offer5 = Offer.new(name: "Rolex Explorer II", price: "673€", user: User.all.sample, description: "This Oyster Perpetual Explorer II in Oystersteel with an Oyster bracelet features a white dial with an arrow-shaped 24-hour hand and hour markers with a Chromalight display.", address: address5, latitude: Geocoder.coordinates(address5)[0], longitude: Geocoder.coordinates(address5)[1])
-offer5.photos.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/sea-dweller/m126603-0001_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
+offer5.photos.attach(io: URI.open('https://content.rolex.com//dam/new-watches-2021/media/wallpapers/explorer/m124273-0001_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
 offer5.save
 
 address6 = "Lille"
 offer6 = Offer.new(name: "Rolex Cellini", price: "428€", user: User.all.sample, description: "The Cellini collection celebrates the eternal elegance of traditional timepieces with a contemporary touch; the name was inspired by the Italian Renaissance artist, Benvenuto Cellini.", address: address6 ,latitude: Geocoder.coordinates(address6)[0], longitude: Geocoder.coordinates(address6)[1])
-offer6.photos.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/lady-datejust/m279138rbr-0015_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
+offer6.photos.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/cellini/m50535-0002_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
 offer6.save
 
 address7 = "Toulouse"
@@ -112,17 +115,17 @@ offer7.save
 
 address8 = "Lyon"
 offer8 = Offer.new(name: "Rolex Day date", price: "279€", user: User.all.sample, description: "Launched in 1956, the Day-Date made its debut as the first waterproof and self-winding chronometer wristwatch to offer a modern calendar with an instantaneous day display, spelt out in full in a window on the dial, in addition to the date.", address: address8,latitude: Geocoder.coordinates(address8)[0], longitude: Geocoder.coordinates(address8)[1])
-offer8.photos.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/air-king/m116900-0001_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
+offer8.photos.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/day-date/m228239-0033_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
 offer8.save
 
 address9 = "Deauville"
 offer9 = Offer.new(name: "Rolex Milgauss", price: "970€", user: User.all.sample, description: "This Oyster Perpetual Milgauss features a Z-blue dial with luminescent hour markers, a green sapphire crystal produces light reflections while preserving optimal legibility.", address: address9 ,latitude: Geocoder.coordinates(address9)[0], longitude: Geocoder.coordinates(address9)[1])
-offer9.photos.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/oyster-perpetual/m124300-0001_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
+offer9.photos.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/milgauss/m116400gv-0002_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
 offer9.save
 
 address10 = "Bordeaux"
 offer10 = Offer.new(name: "Rolex Air-king", price: "147€", user: User.all.sample, description: "With its 40 mm case in Oystersteel, solid-link Oyster bracelet with Oysterclasp, and distinctive Black dial, the Air-King perpetuates the aeronautical heritage of the original Rolex Oyster.", address: address10, latitude: Geocoder.coordinates(address10)[0], longitude: Geocoder.coordinates(address10)[1])
-offer10.photos.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/submariner/m124060-0001_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
+offer10.photos.attach(io: URI.open('https://content.rolex.com//dam/media/wallpapers/air-king/m116900-0001_1280x768.jpg'), filename: 'a.png', content_type: 'image/png')
 offer10.save
 
 p "#{Offer.count} offers are created"
@@ -143,3 +146,7 @@ admin.photo.attach(io: fileadmin, filename: 'a.png', content_type: 'image/png')
 admin.save
 
 p "Admin created"
+
+p "Creating rental..."
+Rental.create(start_time: Date.today - 20, end_time: Date.today - 22, total_amount: (Offer.last.price * 3).round(2), user: admin, offer: Offer.last)
+p "Rental created"
