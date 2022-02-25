@@ -1,20 +1,31 @@
-<div class="container mt-5 text-center">
-  <h1> Hello <%= current_user.username %> !</h1>
-
-  <% if current_user.photo.attached? %>
-    <%= cl_image_tag current_user.photo.key, class:"avatar-profile" %>
-  <% end %>
-
-  <div class="user-info">
-    <ul>
-      <li>First name: <%= current_user.first_name %></li>
-      <li>Last name: <%= current_user.last_name %></li>
-      <li><%= current_user.email %></li>
-      <li><%= current_user.phone_number %></li>
-    </ul>
-  </div>
-  <div class="mb-5">
-    <%= link_to "Edit your profile", edit_user_registration_path, class:"btn" %>
-    <%= link_to "Back to home", root_path, class:"btn" %>
+<div class="container d-flex justify-content-center">
+  <div class="container my-5 text-center">
+    <h1> Hello <%= current_user.username %> !</h1>
+    <% if current_user.photo.attached? %>
+      <%= cl_image_tag current_user.photo.key, class:"avatar-profile" %>
+    <% end %>
+    <div class="user-info">
+      <ul>
+        <li>First name: <%= current_user.first_name %></li>
+        <li>Last name: <%= current_user.last_name %></li>
+        <li> <i class="fas fa-at"></i> <%= current_user.email %></li>
+        <li> <i class="fas fa-phone"></i> <%= current_user.phone_number %></li>
+      </ul>
+    </div>
+    <div class="mb-2">
+      <% if current_user.rentals.blank? %>
+        <h5 class="mb-2"> Let's start and rent a Rolex to flex </h5>
+        <%= link_to "Offers", offers_path, class:"btn" %>
+      <% else %>
+        <h5> You rented
+          <%= pluralize current_user.rentals.size, "Rolex" %> !
+          Thank you !
+        </h5>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to "Edit your profile", edit_user_registration_path, class:"btn" %>
+      <%= link_to "Back to home", root_path, class:"btn" %>
+    </div>
   </div>
 </div>

@@ -33,9 +33,9 @@ class OffersController < ApplicationController
   def create
     @offer = Offer.new(offer_params)
     @offer.user = current_user
-    @offer.price = @offer.price.round(2)
     authorize @offer
     if @offer.save
+      @offer.price = @offer.price.round(2)
       redirect_to offer_path(@offer), notice: 'Offer was successfully created.'
     else
       render :new
@@ -66,6 +66,6 @@ class OffersController < ApplicationController
   end
 
   def offer_params
-    params.require(:offer).permit(:name, :price, :photo, :description, :avaibility, :address)
+    params.require(:offer).permit(:name, :price, :description, :avaibility, :address, photos: [])
   end
 end

@@ -12,3 +12,9 @@
 .blue {
   color: $primarycolor;
 }
+
+.img-show {
+  object-fit: cover;
+  height: 300px;
+  width: 100%;
+}
