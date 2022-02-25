@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5 offershow">
   <div class="row">
     <div class="col-sm-6">
       <%= cl_image_tag @offer.photo.key, class:"img-show w-100 mb-3" %>
@@ -13,14 +13,14 @@
             <%= link_to("Delete", offer_path(@offer), method: :delete, data: {confirm: "Are you sure?"}) %>
           </div>
         <% end %>
-        <p><i class="fas fa-tag"></i> <strong><span id="priceperday"><%= '%.2f' % @offer.price %></span>€</strong>/day</p>
+        <p class="blue"><i class="fas fa-tag"></i> <strong><span id="priceperday"><%= '%.2f' % @offer.price %></span>€</strong>/day</p>
       </div>
-      <div class="action-container" data-controller="dynamicprice">
+      <div class="action-container mb-5" data-controller="dynamicprice">
         <%= simple_form_for @rental do |f| %>
           <%= f.input :start_time, as: :date, html5: true,label: "Start date", input_html:{value: Date.today, data:{action:"change->dynamicprice#updatePrice"}} %>
           <%= f.input :end_time, as: :date, html5: true, label: "End date", input_html:{value: Date.today, data:{action:"change->dynamicprice#updatePrice"}} %>
           <%= hidden_field_tag :offer_id, @offer.id %>
-          <p><i class="fas fa-shopping-cart"></i> <strong><span data-dynamicprice-target="price" id="realprice"><%= @offer.price %> €</span></strong></p>
+          <p class="blue"><i class="fas fa-shopping-cart"></i> <strong><span data-dynamicprice-target="price" id="realprice"><%= '%.2f' % @offer.price %> €</span></strong></p>
           <%= f.submit "Rent it", class:"btn", id:"rent-btn" %>
         <% end %>
       </div>

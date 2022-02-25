@@ -3,6 +3,9 @@
     <div class="col-md-8">
       <%= render 'shared/searchbar' %>
       <div class="row">
+        <% if @offers.count == 0 %>
+          <p>No results for this query 😕 Try something else !</p>
+        <% end %>
         <% @offers.each do |offer| %>
           <div class="col-sm-6 col-md-6 mb-3">
             <%= link_to offer, class:"card-offer-link" do %>
@@ -15,7 +18,7 @@
                 <div class="card-offer-infos">
                   <div class="card-offer-infos-top">
                     <p class="card-offer-name"><%= offer.name %></p>
-                    <p class="card-offer-description"><%= offer.description.truncate(135) %></p>
+                    <p class="card-offer-description"><%= offer.description.truncate(110) %></p>
                   </div>
                   <div class="card-offer-infos-bottom">
                     <p class="card-offer-pricing"><%= '%.2f' % offer.price %>€/day</p>

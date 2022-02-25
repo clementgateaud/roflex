@@ -1,4 +1,14 @@
+@import "colors";
+
 .action-container {
   padding-top: 8px;
 }
 
+.offershow i{
+  color: $primarycolor;
+  margin-right: 5px;
+}
+
+.blue {
+  color: $primarycolor;
+}

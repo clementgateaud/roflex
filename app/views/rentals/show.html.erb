@@ -7,10 +7,8 @@
      <div class="info-container">
       <h2><%= @rental.offer.name %></h2>
       <p><%= @rental.offer.description %></p>
-      <h4><i class="fas fa-euro-sign"></i> Total price</h4>
-      <p><strong><%= '%.2f' % @rental.total_amount %> €</strong></p>
-      <h4>Rental dates</h4>
-      <p><i class="fas fa-tag"></i> From <strong><%= @rental.start_time.strftime("%d/%m/%Y") %></strong>  to <strong><%= @rental.end_time.strftime("%d/%m/%Y") %></strong> </p>
+      <p class="blue"><i class="fas fa-tag"></i> <strong><span id="priceperday"><%= '%.2f' % @rental.total_amount %></span>€</strong></p>
+      <p class="blue"><i class="fas fa-calendar"></i> <strong><%= @rental.start_time.strftime("%a, %d %B %Y") %></strong> - </i> <strong><%= @rental.end_time.strftime("%a, %d %B %Y") %></strong></p>
     </div>
     </div>
   </div>

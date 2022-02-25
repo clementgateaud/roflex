@@ -33,10 +33,11 @@
 
 .card-offer .card-offer-address {
   color: $primarycolor;
+  font-size: 14px;
 }
 
 .card-offer .card-offer-infos {
-  padding: 16px;
+  padding: 14px;
   position: relative;
 }
 
@@ -76,6 +77,26 @@
 .window > img {
   width: 100%;
   height: auto;
+}
+
+.tag {
+  margin-left:10px !important;
+  color: white;
+  padding:2px 10px;
+  border-radius: 5px;
+  font-size: 10px;
+}
+
+.tag.future{
+  background-color: #2379FB
+}
+
+.tag.present{
+  background-color: #fdc921
+}
+
+.tag.past{
+  background-color: #ED2249
 }
 
 .card-category {

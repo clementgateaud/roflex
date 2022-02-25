@@ -1,15 +1,21 @@
 <div class="container my-4">
-  <h1>My rentals</h1>
+  <h1 class="mb-3">My rentals</h1>
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <button class="nav-link active" id="nav-rentals-tab" data-bs-toggle="tab" data-bs-target="#nav-rentals" type="button" role="tab" aria-controls="nav-rentals" aria-selected="true">My rentals (as renter)</button>
-      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">My rentals(as owner)</button>
+      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">My rentals (as owner)</button>
       <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">My offers (as owner)</button>
     </div>
   </nav>
   <div class="tab-content mt-3" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-rentals" role="tabpanel" aria-labelledby="nav-rentals-tab">
       <div class="row">
+        <% if current_user.rentals.count == 0 %>
+          <div class="container">
+            <p class="mt-3">You haven't rent any watch yet but it's never too late !</p>
+            <%= link_to("Discover products", offers_path, class:"btn") %>
+          </div>
+        <% end %>
         <% current_user.rentals.each do |rental| %>
           <div class="col-sm-6 col-md-4 mb-3">
             <%= link_to rental, class:"card-offer-link" do %>
@@ -22,10 +28,19 @@
                 <div class="card-offer-infos">
                   <div class="card-offer-infos-top">
                     <p class="card-offer-name"><%= rental.offer.name %></p>
-                    <p class="card-offer-description"><%= rental.offer.description.truncate(100) %></p>
+                    <p class="card-offer-description"><%= rental.offer.description.truncate(110) %></p>
                   </div>
                   <div class="card-offer-infos-bottom">
-                    <p class="card-offer-pricing"><%= '%.2f' % rental.total_amount %>€</p>
+                    <div class="d-flex align-items-end">
+                      <p class="card-offer-pricing"><%= '%.2f' % rental.total_amount %>€</p>
+                      <% if rental.start_time > Date.today %>
+                        <p class="tag future">To come</p>
+                      <% elsif rental.end_time < Date.today %>
+                        <p class="tag past">Over</p>
+                      <% else %>
+                        <p class="tag present">Ongoing</p>
+                      <% end %>
+                    </div>
                     <p class="card-offer-address">📍 <%= rental.offer.address %></p>
                   </div>
                   <% if rental.offer.user.photo.attached? %>
@@ -42,6 +57,17 @@
     </div>
     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
       <div class="row">
+        <% if current_user.offers.count == 0 %>
+          <div class="container">
+            <p class="mt-3">It seems like you haven't posted any offer yet !</p>
+            <%= link_to("Add a new offer", new_offer_path, class:"btn") %>
+          </div>
+        <% elsif @rentals.select { |rental| rental.offer.user == current_user }.count == 0 %>
+          <div class="container">
+            <p class="mt-3">Nobody has rent one of your watches, yet!</p>
+            <%= link_to("Add a new offer", new_offer_path, class:"btn") %>
+          </div>
+        <% end %>
         <% @rentals.select { |rental| rental.offer.user == current_user }.each do |rental| %>
           <div class="col-sm-6 col-md-4 mb-3">
             <%= link_to rental, class:"card-offer-link" do %>
@@ -54,10 +80,19 @@
                 <div class="card-offer-infos">
                   <div class="card-offer-infos-top">
                     <p class="card-offer-name"><%= rental.offer.name %></p>
-                    <p class="card-offer-description"><%= rental.offer.description.truncate(100) %></p>
+                    <p class="card-offer-description"><%= rental.offer.description.truncate(110) %></p>
                   </div>
                   <div class="card-offer-infos-bottom">
-                    <p class="card-offer-pricing"><%= '%.2f' % rental.total_amount %>€</p>
+                    <div class="d-flex align-items-end">
+                      <p class="card-offer-pricing"><%= '%.2f' % rental.total_amount %>€</p>
+                      <% if rental.start_time > Date.today %>
+                        <p class="tag future">To come</p>
+                      <% elsif rental.end_time < Date.today %>
+                        <p class="tag past">Over</p>
+                      <% else %>
+                        <p class="tag present">Ongoing</p>
+                      <% end %>
+                    </div>
                     <p class="card-offer-address">📍 <%= rental.offer.address %></p>
                   </div>
                   <% if rental.offer.user.photo.attached? %>
@@ -74,6 +109,12 @@
     </div>
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
       <div class="row">
+        <% if current_user.offers.count == 0 %>
+          <div class="container">
+            <p class="mt-3">It seems like you haven't posted any offer yet !</p>
+            <%= link_to("Add a new offer", new_offer_path, class:"btn") %>
+          </div>
+        <% end %>
         <% current_user.offers.each do |offer| %>
           <div class="col-sm-6 col-md-4 mb-3">
             <%= link_to offer, class:"card-offer-link" do %>
@@ -86,7 +127,7 @@
                 <div class="card-offer-infos">
                   <div class="card-offer-infos-top">
                     <p class="card-offer-name"><%= offer.name %></p>
-                    <p class="card-offer-description"><%= offer.description.truncate(100) %></p>
+                    <p class="card-offer-description"><%= offer.description.truncate(110) %></p>
                   </div>
                   <div class="card-offer-infos-bottom">
                     <p class="card-offer-pricing"><%= '%.2f' % offer.price %>€/day</p>
