@@ -12,6 +12,8 @@
   height: 200px;
   width: 100%;
   object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .card-offer p {
@@ -72,6 +74,7 @@
 
 .window {
   box-shadow: none;
+  padding-top: 15px;
 }
 
 .window > img {
