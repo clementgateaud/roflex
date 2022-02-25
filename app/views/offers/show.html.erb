@@ -44,4 +44,22 @@
       </div>
     </div>
   </div>
+
+  <% if @offer.reviews.count > 0 %>
+    <div class="container mb-5 mt-3">
+      <div class="row mb-3">
+        <h2>Last reviews</h2>
+        <p><%= pluralize((@offer.reviews.count),'review') %> </p>
+        <% @offer.reviews.each do |review| %>
+          <div class="card-review col-md-3 m-2 p-3">
+            <p class="blue"><%= "★" * review.rating %><%= "☆" * (5 - review.rating) %></p>
+            <p class="blue"><%= review.content %></p>
+          </div>
+        <% end %>
+      </div>
+      <%= link_to 'Leave a review', new_offer_review_path(@offer), class: "col-2 btn btn-primary" %>
+    </div>
+    <% else %>
+      <%= link_to 'Leave the first review for this product !', new_offer_review_path(@offer) %>
+  <% end %>
 </div>
