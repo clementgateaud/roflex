@@ -122,3 +122,9 @@
   border-radius: 5px;
   text-decoration: none;
 }
+
+.window * {
+  &:focus-visible {
+    outline: none;
+  }
+}
