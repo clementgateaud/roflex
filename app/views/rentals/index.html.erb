@@ -72,7 +72,7 @@
           <div class="col-sm-6 col-md-4 mb-3">
             <%= link_to rental, class:"card-offer-link" do %>
               <div class="card-offer">
-                <% if rental.offers.attached? %>
+                <% if rental.offer.photos.attached? %>
                   <%= cl_image_tag rental.offer.photos.first.key %>
                 <% else %>
                   <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
