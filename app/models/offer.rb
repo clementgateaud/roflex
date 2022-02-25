@@ -2,6 +2,7 @@ class Offer < ApplicationRecord
   belongs_to :user # le vendeur
   has_many :rentals
   has_many :users, through: :rentals
+  has_many :reviews, dependent: :destroy
   #has_many_attached :photos
   validates :name, presence: true
   validates :price, presence: true
