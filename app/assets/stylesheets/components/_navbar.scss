@@ -1,5 +1,14 @@
 @import "colors";
 
+.navbar .container {
+  background-color: white;
+}
+
+.navbar .collapse {
+  padding-bottom: 10px;
+}
+
+
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
