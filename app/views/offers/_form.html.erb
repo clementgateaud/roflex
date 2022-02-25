@@ -2,7 +2,7 @@
   <%= f.input :name, label: false, placeholder: "Name of your watch*" %>
   <%= f.input :price, label: false, placeholder: "Select a price per day*" %>
   <%= f.input :description, label: false, placeholder: "Describe your watch*" %>
-  <%= f.input :photo, required: true, label: false, as: :file %>
+  <%= f.input :photos, required: true, label: false, as: :file, input_html: { multiple: true } %>
   <%= f.input :address, label: false, required: true,
         input_html: { data: { geocoder_target: "address" }, class: "d-none" },
         wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
