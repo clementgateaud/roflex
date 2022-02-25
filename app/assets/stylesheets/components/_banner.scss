@@ -1,3 +1,5 @@
+@import "colors";
+
 .banner {
   background-size: cover;
   background-position: center;
@@ -8,7 +10,7 @@
 
 .banner h1 {
   margin: 0;
-  color: white;
+  color: $primarycolor;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 40px;
   font-weight: 400;
@@ -16,7 +18,7 @@
 
 .banner p {
   font-size: 20px;
-  color: white;
+  color: $primarycolor;
   opacity: 0.9;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
