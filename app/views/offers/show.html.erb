@@ -45,8 +45,8 @@
     </div>
   </div>
 
+<div class="container mb-5 mt-3">
   <% if @offer.reviews.count > 0 %>
-    <div class="container mb-5 mt-3">
       <div class="row mb-3">
         <h2>Last reviews</h2>
         <p><%= pluralize((@offer.reviews.count),'review') %> </p>
@@ -57,9 +57,9 @@
           </div>
         <% end %>
       </div>
-      <%= link_to 'Leave a review', new_offer_review_path(@offer), class: "col-2 btn btn-primary" %>
-    </div>
+      <%= link_to 'Leave a review', new_offer_review_path(@offer), class: "col-md-2 btn btn-primary" %>
     <% else %>
       <%= link_to 'Leave the first review for this product !', new_offer_review_path(@offer) %>
   <% end %>
+</div>
 </div>
