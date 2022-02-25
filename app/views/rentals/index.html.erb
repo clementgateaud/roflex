@@ -16,7 +16,7 @@
             <%= link_to("Discover products", offers_path, class:"btn") %>
           </div>
         <% end %>
-        <% current_user.rentals.each do |rental| %>
+        <% current_user.rentals.reverse.each do |rental| %>
           <div class="col-sm-6 col-md-4 mb-3">
             <%= link_to rental, class:"card-offer-link" do %>
               <div class="card-offer">
@@ -68,7 +68,7 @@
             <%= link_to("Add a new offer", new_offer_path, class:"btn") %>
           </div>
         <% end %>
-        <% @rentals.select { |rental| rental.offer.user == current_user }.each do |rental| %>
+        <% @rentals.select { |rental| rental.offer.user == current_user }.reverse.each do |rental| %>
           <div class="col-sm-6 col-md-4 mb-3">
             <%= link_to rental, class:"card-offer-link" do %>
               <div class="card-offer">
@@ -115,7 +115,7 @@
             <%= link_to("Add a new offer", new_offer_path, class:"btn") %>
           </div>
         <% end %>
-        <% current_user.offers.each do |offer| %>
+        <% current_user.offers.reverse.each do |offer| %>
           <div class="col-sm-6 col-md-4 mb-3">
             <%= link_to offer, class:"card-offer-link" do %>
               <div class="card-offer">
