@@ -2,6 +2,7 @@
   <%= link_to offer, class:"card-offer" do %>
   <%= cl_image_tag offer.photos.first.key %>
   <h5 class="mt-2"><%= offer.name %></h5>
+  <h6>💵 <strong><%= offer.price %>€ /day</strong></h6>
   <p>📍 <%= offer.address %></p>
   <% end %>
 </div>
