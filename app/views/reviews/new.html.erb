@@ -1,7 +1,7 @@
-<div class="container col-6 mt-5">
+<div class="container col-6 my-5">
   <h1 class="mb-4">Leave a review to <%= @offer.name %></h1>
   <%= simple_form_for [ @offer, @review ] do |f| %>
-    <%= f.input :content %>
+    <%= f.input :content, label: "Your comment" %>
     <%=  f.input :rating %>
     <%= f.submit "Submit review", class: "btn btn-primary" %>
   <% end %>
